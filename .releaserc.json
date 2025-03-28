@@ -1,7 +1,7 @@
 {
   "branches": [
     {
-      "name": "backend-uat",
+      "name": "prod",
       "channel": "latest",
       "prerelease": false
     }
