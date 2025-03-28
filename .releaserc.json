@@ -1,7 +1,7 @@
 {
   "branches": [
     {
-      "name": "prod",
+      "name": "uat",
       "channel": "latest",
       "prerelease": false
     }
