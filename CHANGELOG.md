@@ -1,3 +1,11 @@
+### [1.0.2](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.1...v1.0.2) (2025-03-28)
+
+
+### Chores
+
+* **release:** 1.0.0 [skip ci] ([2ddb16b](https://github.com/swetagupta311/test-semetic-versioning/commit/2ddb16b67e90c6ea437503b26411ee611f8c543a))
+* **release:** 1.0.0 [skip ci] ([6179c44](https://github.com/swetagupta311/test-semetic-versioning/commit/6179c4499dcf5646e00cf7a359c11009c82695bd))
+
 ### [1.0.1](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.0...v1.0.1) (2025-03-28)
 
 
