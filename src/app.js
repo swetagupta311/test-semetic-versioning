@@ -5,7 +5,6 @@ const userRoutes = require('./routes/userRoutes');
 const mongoSanitize = require('express-mongo-sanitize');
 const fileUpload = require("express-fileupload");
 const xss = require('xss-clean');
-const errorHandler = require('./middlewares/errorHandler');
 const hpp = require('hpp');
 const fs = require('fs');
 require('dotenv').config();
