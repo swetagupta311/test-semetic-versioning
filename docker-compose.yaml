@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  pmi-uat:
+  pmi:
     build: .
     ports:
       - "3000:3000"
