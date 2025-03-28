@@ -1,3 +1,15 @@
+### [1.0.3](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.2...v1.0.3) (2025-03-28)
+
+
+### Bug Fixes
+
+* fixing changes ([17d9f01](https://github.com/swetagupta311/test-semetic-versioning/commit/17d9f01722f7f6c6088b507e5a667fd2dca3f45f))
+
+
+### Build System
+
+* Merge UAT into master while keeping .github/specific-file.yml unchanged ([af13b4f](https://github.com/swetagupta311/test-semetic-versioning/commit/af13b4f07da4cc5f81535c4ac244e95fc8139b72))
+
 ### [1.0.2](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.1...v1.0.2) (2025-03-28)
 
 
