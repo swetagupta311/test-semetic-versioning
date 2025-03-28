@@ -1,0 +1,61 @@
+[
+  {
+    "api_call_time": "2025-03-13 10:36:15",
+    "device_info": {
+      "device": "samsung SM-G990B2",
+      "os_version": "14 (API 34)",
+      "brand": "samsung",
+      "hardware": "qcom",
+      "product": "r9q2xxx",
+      "android_id": "3c65a66072630ce1",
+      "screen_resolution": "1080 x 2115 px",
+      "locale": "English (en_IN)"
+    },
+    "user_info": {
+      "user_id": "MIP-FW-0235",
+      "user_name": "Keshav ll"
+    },
+    "version_info": {
+      "version": "Version- 1.0.95"
+    },
+    "request": {
+      "url": "https://pmi.wizsuite.com/api/v1/editsurvey/1437",
+      "method": "PUT",
+      "headers": {
+        "Authorization": "██"
+      },
+      "body": "Ignored Multipart Image"
+    },
+    "response": {
+      "code": 200,
+      "message": "",
+      "body": {
+        "id": 1437,
+        "activity_id": 22,
+        "user_id": 4,
+        "age": 89,
+        "do_you_smoke": true,
+        "participate_survey": "1",
+        "name": null,
+        "gender": null,
+        "brand_id": null,
+        "variant_id": null,
+        "other": null,
+        "competitor_brand_id": null,
+        "competitor_variant_id": null,
+        "competitor_other": null,
+        "latitude": 28.6270261,
+        "longitude": 77.3761185,
+        "signature": "https://wizsuite-data.s3.ap-south-1.amazonaws.com/PMI/signature/4910da1e-c352-447d-940e-6c9f9e8de925.jpg",
+        "feedback": null,
+        "product_rating": null,
+        "pack_rating": null,
+        "stick_rating": null,
+        "createdBySpecialUser": 0,
+        "specialUserId": 0,
+        "created_at": "2025-03-13T05:06:05.580Z",
+        "updated_at": "2025-03-13T05:06:05.580Z"
+      }
+    }
+  }
+]
