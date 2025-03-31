@@ -1,3 +1,5 @@
+### [1.0.5](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.4...v1.0.5) (2025-03-31)
+
 ### [1.0.4](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.3...v1.0.4) (2025-03-31)
 
 
