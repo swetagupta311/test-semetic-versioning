@@ -8,7 +8,7 @@
   ],
   "tagFormat": "v${version}",
   "plugins": [
-    "semantic-release-git-merge",
+    "semantic-release-merge-when-green",
     ["@semantic-release/commit-analyzer", {
       "preset": "angular",
       "releaseRules": [
