@@ -5,7 +5,6 @@ const userRoutes = require('./routes/userRoutes');
 const mongoSanitize = require('express-mongo-sanitize');
 const fileUpload = require("express-fileupload");
 const xss = require('xss-clean');
-const errorHandler = require('./middlewares/errorHandler');
 const hpp = require('hpp');
 const fs = require('fs');
 require('dotenv').config();
@@ -37,13 +36,13 @@ app.all('/*', (req, res, next) => {
 // SECURITY: Hide "X-Powered-By" header
 app.disable('x-powered-by');
 
-// // Enforce HTTPS
-// app.use((req, res, next) => {
-//   if (req.headers['x-forwarded-proto'] !== 'https') {
-//     return res.redirect(['https://', req.get('Host'), req.url].join(''));
-//   }
-//   next();
-// });
+// Enforce HTTPS
+app.use((req, res, next) => {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect(['https://', req.get('Host'), req.url].join(''));
+  }
+  next();
+});
 
 // Middleware
 app.use(bodyParser.json());
