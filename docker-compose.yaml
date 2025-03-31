@@ -9,6 +9,8 @@ services:
       - ./.env
     volumes:
     pmi: pmi
-      
 
-
+  Mysql:
+    image: "mysql:latest"
+    ports: "3306:3306"
+    
