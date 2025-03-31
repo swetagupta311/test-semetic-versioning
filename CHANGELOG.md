@@ -1,3 +1,16 @@
+### [1.0.4](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.3...v1.0.4) (2025-03-31)
+
+
+### Refactors
+
+* to get version increment when merged ([a7ffffe](https://github.com/swetagupta311/test-semetic-versioning/commit/a7ffffef2bac27b6d4d16f3f8dda644444ac54f7))
+* to get version increment when merged ([2275b8b](https://github.com/swetagupta311/test-semetic-versioning/commit/2275b8bdd6f10aa085914b354199fb0891d5c879))
+
+
+### Chores
+
+* changes in sementic-release ([4e6405f](https://github.com/swetagupta311/test-semetic-versioning/commit/4e6405f7bb79d3976bc4587d5f5a5000bb9bd44e))
+
 ### [1.0.3](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.2...v1.0.3) (2025-03-28)
 
 
