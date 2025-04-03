@@ -8,5 +8,5 @@ services:
     env_file:
       - ./.env
     volumes:
-    pmi: pmi
+    pmi: pmi-uat
     
