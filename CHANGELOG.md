@@ -1,3 +1,8 @@
+## <small>1.0.1 (2025-04-03)</small>
+
+* fix: Update docker-compose.yaml ([728240f](https://github.com/swetagupta311/test-semetic-versioning/commit/728240f))
+* changes ([81efeec](https://github.com/swetagupta311/test-semetic-versioning/commit/81efeec))
+
 ## 1.0.0 (2025-04-03)
 
 * fix: branch ([e8a7bde](https://github.com/swetagupta311/test-semetic-versioning/commit/e8a7bde))
