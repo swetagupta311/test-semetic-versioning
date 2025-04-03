@@ -4,12 +4,15 @@
       "name": "uat",
       "channel": "latest",
       "prerelease": false
-    }
+    },
+    { "name": "prod", "channel": "prod", "prerelease": false }
   ],
   "tagFormat": "v${version}",
   "plugins": [
+    ["@semantic-release/exec", {
+      "prepareCmd": "git tag -d v${nextRelease.version} || true && git push origin :refs/tags/v${nextRelease.version} || true"
+    }],
     ["@semantic-release/commit-analyzer", {
-      "preset": "angular",
       "releaseRules": [
         {"type": "docs", "scope": "README", "release": "patch"},
         {"type": "fix", "release": "patch"},
@@ -53,8 +56,8 @@
     }],
     ["@semantic-release/git", {
       "assets": ["package.json", "CHANGELOG.md"],
-      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-    }],
-    "@semantic-release/github"
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+      "gitTag": false
+    }]
   ]
 }
