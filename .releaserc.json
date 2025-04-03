@@ -4,9 +4,7 @@
       "name": "uat",
       "channel": "latest",
       "prerelease": false
-    },
-    { "name": "prod", "channel": "prod", "prerelease": false }
-  ],
+    }  ],
   "tagFormat": "v${version}",
   "plugins": [
     ["@semantic-release/exec", {
