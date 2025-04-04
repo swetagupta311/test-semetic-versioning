@@ -1,3 +1,10 @@
+### [1.1.10](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.9...v1.1.10) (2025-04-04)
+
+
+### Bug Fixes
+
+* sementic-release version change ([b1f9921](https://github.com/swetagupta311/test-semetic-versioning/commit/b1f992120ba0a38f61b20980207b2c951a2cc79e))
+
 ## <small>1.1.9 (2025-04-04)</small>
 
 * fix: tags problem ([90761df](https://github.com/swetagupta311/test-semetic-versioning/commit/90761df))
