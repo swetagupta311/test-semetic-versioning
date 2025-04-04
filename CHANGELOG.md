@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.1...v1.1.0) (2025-04-04)
+
+
+### Features
+
+* changes ([b051d48](https://github.com/swetagupta311/test-semetic-versioning/commit/b051d48526a63d7746376ed7fa21e1a1743f5095))
+
 ## <small>1.0.1 (2025-04-03)</small>
 
 * fix: Update docker-compose.yaml ([728240f](https://github.com/swetagupta311/test-semetic-versioning/commit/728240f))
