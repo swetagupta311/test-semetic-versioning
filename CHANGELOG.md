@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.6...v1.1.7) (2025-04-04)
+
+
+### Reverts
+
+* sv changes ([63ca97b](https://github.com/swetagupta311/test-semetic-versioning/commit/63ca97b4b988a0490753208ef0eb70264125eb4d))
+
 ## [1.1.6](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.5...v1.1.6) (2025-04-04)
 
 ## [1.1.5](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.4...v1.1.5) (2025-04-04)
