@@ -8,13 +8,17 @@
   ],
   "tagFormat": "v${version}",
   "plugins": [
+    ["@semantic-release/exec", {
+      "prepareCmd": "git tag -d v${nextRelease.version} || true && git push origin :refs/tags/v${nextRelease.version} || true"
+    }],
     ["@semantic-release/commit-analyzer", {
       "preset": "angular",
       "releaseRules": [
-        {"type": "docs", "scope": "README", "release": "patch"},
+        {"type": "docs", "release": "patch"},
         {"type": "fix", "release": "patch"},
         {"type": "chore", "release": "patch"},
         {"type": "feat", "release": "minor"},
+        {"type": "Merge", "release": "patch"},
         {"type": "refactor", "release": "patch"},
         {"type": "security", "release": "minor"},
         {"type": "style", "release": "patch"},
@@ -26,11 +30,12 @@
       ],
       "parserOpts": {
         "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"],
-        "mergePattern": "^Merge branch '.*'$"
+        "mergePattern": "^Merge branch '.*'$",
+        "mergeCorrespondence": ["id"]
       }
     }],
     ["@semantic-release/release-notes-generator", {
-      "preset": "angular",
+      "preset": "conventionalcommits",
       "presetConfig": {
         "types": [
           {"type": "feat", "section": "Features"},
@@ -56,9 +61,6 @@
       "assets": ["package.json", "CHANGELOG.md"],
       "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
       "gitTag": false
-    }],
-    ["@semantic-release/exec", {
-      "successCmd": "echo Successfully released version ${nextRelease.version}"
     }]
   ]
 }
