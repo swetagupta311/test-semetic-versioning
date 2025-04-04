@@ -1,3 +1,7 @@
+## <small>1.1.9 (2025-04-04)</small>
+
+* fix: tags problem ([90761df](https://github.com/swetagupta311/test-semetic-versioning/commit/90761df))
+
 ## <small>1.1.8 (2025-04-04)</small>
 
 * chore: sv changes ([eb3f526](https://github.com/swetagupta311/test-semetic-versioning/commit/eb3f526))
