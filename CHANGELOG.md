@@ -1,3 +1,7 @@
+## <small>1.1.8 (2025-04-04)</small>
+
+* chore: sv changes ([eb3f526](https://github.com/swetagupta311/test-semetic-versioning/commit/eb3f526))
+
 ## [1.1.7](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.6...v1.1.7) (2025-04-04)
 
 
