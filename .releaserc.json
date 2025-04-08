@@ -28,8 +28,8 @@
       ]
     }],
     ["@semantic-release/release-notes-generator", {
-      "preset": "conventionalcommits",
-      "presetConfig": {
+      "preset": {
+        "name": "conventionalcommits",
         "types": [
           {"type": "feat", "section": "Features"},
           {"type": "fix", "section": "Bug Fixes"},
@@ -37,11 +37,8 @@
           {"type": "docs", "section": "Documentation"},
           {"type": "style", "section": "Styles"},
           {"type": "refactor", "section": "Refactors"},
-          {"type": "perf", "section": "Performance Improvements"},
-          {"type": "test", "section": "Tests"},
-          {"type": "build", "section": "Build System"},
-          {"type": "ci", "section": "CI/CD"},
-          {"type": "security", "section": "Security Fixes"}
+          {"type": "perf", "section": "Performance"},
+          {"type": "test", "section": "Tests"}
         ]
       }
     }],
