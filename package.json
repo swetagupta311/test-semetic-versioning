@@ -1,6 +1,6 @@
 {
   "name": "pmi",
-  "version": "1.0.4",
+  "version": "1.0.3",
   "private": true,
   "main": "index.js",
   "scripts": {
@@ -58,7 +58,16 @@
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^10.0.1",
+    "@semantic-release/exec": "^7.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.0.3",
+    "@semantic-release/npm": "^10.0.4",
+    "@semantic-release/release-notes-generator": "^11.0.7",
     "conventional-changelog-angular": "^8.0.0",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
+    "semantic-release": "^24.0.1",
     "conventional-changelog-cli": "^2.2.2",
     "install": "^0.13.0",
     "npm": "^11.2.0"
