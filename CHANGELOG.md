@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## <small>1.0.5 (2025-04-08)</small>
+
+* refactor: fixing ptuhbbu ([7d8be3f](https://github.com/swetagupta311/test-semetic-versioning/commit/7d8be3f))
+
 ## <small>1.0.4 (2025-04-08)</small>
 
 * refactor: sr changes ([79d0de7](https://github.com/swetagupta311/test-semetic-versioning/commit/79d0de7))

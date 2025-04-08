@@ -1,6 +1,6 @@
 {
   "name": "pmi",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "private": true,
   "main": "index.js",
   "scripts": {
@@ -66,10 +66,10 @@
     "@semantic-release/npm": "^10.0.4",
     "@semantic-release/release-notes-generator": "^11.0.7",
     "conventional-changelog-angular": "^8.0.0",
-    "conventional-changelog-conventionalcommits": "^7.0.2",
-    "semantic-release": "^24.0.1",
     "conventional-changelog-cli": "^2.2.2",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
     "install": "^0.13.0",
-    "npm": "^11.2.0"
+    "npm": "^11.2.0",
+    "semantic-release": "^24.0.1"
   }
 }
