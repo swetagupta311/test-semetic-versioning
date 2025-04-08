@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## <small>1.0.4 (2025-04-08)</small>
+
+* refactor: sr changes ([79d0de7](https://github.com/swetagupta311/test-semetic-versioning/commit/79d0de7))
+* fix: changes ([4abafad](https://github.com/swetagupta311/test-semetic-versioning/commit/4abafad))
+
 ## <small>1.0.3 (2025-04-08)</small>
 
 * refactor: changes ([ac1ee0e](https://github.com/swetagupta311/test-semetic-versioning/commit/ac1ee0e))
