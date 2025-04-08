@@ -31,18 +31,17 @@
       "preset": "conventionalcommits",
       "presetConfig": {
         "types": [
-          {"type": "feat", "section": "Features"},
-          {"type": "fix", "section": "Bug Fixes"},
-          {"type": "perf", "section": "Performance Improvements"},
-          {"type": "revert", "section": "Reverts"},
-          {"type": "docs", "section": "Documentation"},
-          {"type": "chore", "section": "Chores"},
-          {"type": "refactor", "section": "Refactors"},
-          {"type": "security", "section": "Security Fixes"},
-          {"type": "style", "section": "Style Changes"},
-          {"type": "ci", "section": "CI/CD"},
-          {"type": "test", "section": "Tests"},
-          {"type": "build", "section": "Build System"}
+          {"type": "feat", "section": "Features", "hidden": false},
+          {"type": "fix", "section": "Bug Fixes", "hidden": false},
+          {"type": "chore", "section": "Chores", "hidden": false},
+          {"type": "docs", "section": "Documentation", "hidden": false},
+          {"type": "style", "section": "Style Changes", "hidden": false},
+          {"type": "refactor", "section": "Refactors", "hidden": false},
+          {"type": "perf", "section": "Performance Improvements", "hidden": false},
+          {"type": "test", "section": "Tests", "hidden": false},
+          {"type": "build", "section": "Build System", "hidden": false},
+          {"type": "ci", "section": "CI/CD", "hidden": false},
+          {"type": "security", "section": "Security Fixes", "hidden": false}
         ]
       }
     }],
