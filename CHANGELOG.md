@@ -1,3 +1,11 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## <small>1.0.2 (2025-04-08)</small>
+
+* fix: sementic-release ([57782d8](https://github.com/swetagupta311/test-semetic-versioning/commit/57782d8))
+
 ## <small>1.0.1 (2025-04-08)</small>
 
 * fix: refactors ([c16f06b](https://github.com/swetagupta311/test-semetic-versioning/commit/c16f06b))
