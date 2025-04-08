@@ -34,7 +34,6 @@ jobs:
         id: semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NODE_ENV: production
           DEBUG: semantic-release:*
         run: |
           npx semantic-release

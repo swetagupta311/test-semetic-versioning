@@ -1,11 +1,5 @@
 {
-  "branches": [
-    {
-      "name": "prod",
-      "channel": "latest",
-      "prerelease": false
-    }
-  ],
+  "branches": ["prod"],
   "plugins": [
     ["@semantic-release/exec", {
       "prepareCmd": "git tag -d v${nextRelease.version} || true && git push origin :refs/tags/v${nextRelease.version} || true"
@@ -28,8 +22,8 @@
       ]
     }],
     ["@semantic-release/release-notes-generator", {
-      "preset": {
-        "name": "conventionalcommits",
+      "preset": "conventionalcommits",
+      "presetConfig": {
         "types": [
           {"type": "feat", "section": "Features"},
           {"type": "fix", "section": "Bug Fixes"},
@@ -37,8 +31,11 @@
           {"type": "docs", "section": "Documentation"},
           {"type": "style", "section": "Styles"},
           {"type": "refactor", "section": "Refactors"},
-          {"type": "perf", "section": "Performance"},
-          {"type": "test", "section": "Tests"}
+          {"type": "perf", "section": "Performance Improvements"},
+          {"type": "test", "section": "Tests"},
+          {"type": "build", "section": "Build System"},
+          {"type": "ci", "section": "CI/CD"},
+          {"type": "security", "section": "Security Fixes"}
         ]
       }
     }],
@@ -51,7 +48,7 @@
     }],
     ["@semantic-release/git", {
       "assets": ["package.json", "CHANGELOG.md"],
-      "gitTag": false
+      "message": "chore(release): ${nextRelease.version} [skip ci]"
     }]
   ]
 }
