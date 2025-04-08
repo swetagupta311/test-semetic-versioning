@@ -1,3 +1,7 @@
+## <small>1.0.1 (2025-04-08)</small>
+
+* fix: refactors ([c16f06b](https://github.com/swetagupta311/test-semetic-versioning/commit/c16f06b))
+
 ## 1.0.0 (2025-04-08)
 
 * fix: branch changes ([4ba08c8](https://github.com/swetagupta311/test-semetic-versioning/commit/4ba08c8))
