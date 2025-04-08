@@ -6,16 +6,14 @@
       "prerelease": false
     }
   ],
-  "tagFormat": "v${version}",
   "plugins": [
     ["@semantic-release/commit-analyzer", {
       "preset": "angular",
       "releaseRules": [
-        {"type": "docs", "scope": "README", "release": "patch"},
+        {"type": "docs", "release": "patch"},
         {"type": "fix", "release": "patch"},
         {"type": "chore", "release": "patch"},
         {"type": "feat", "release": "minor"},
-        {"type": "Merge", "release": "patch"},
         {"type": "refactor", "release": "patch"},
         {"type": "security", "release": "minor"},
         {"type": "style", "release": "patch"},
@@ -24,12 +22,7 @@
         {"type": "build", "scope": "deps", "release": "minor"},
         {"scope": "BREAKING CHANGE", "release": "major"},
         {"type": "perf", "release": "patch"}
-      ],
-      "parserOpts": {
-        "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"],
-        "mergePattern": "^Merge branch '.*'$",
-        "mergeCorrespondence": ["id"]
-      }
+      ]
     }],
     ["@semantic-release/release-notes-generator", {
       "preset": "conventionalcommits",
@@ -40,7 +33,6 @@
           {"type": "perf", "section": "Performance Improvements"},
           {"type": "revert", "section": "Reverts"},
           {"type": "docs", "section": "Documentation"},
-          {"type": "Merge", "release": "Merged"},
           {"type": "chore", "section": "Chores"},
           {"type": "refactor", "section": "Refactors"},
           {"type": "security", "section": "Security Fixes"},
@@ -57,7 +49,7 @@
     }],
     ["@semantic-release/git", {
       "assets": ["package.json", "CHANGELOG.md"],
-      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+      "message": "chore(release): ${nextRelease.version} [skip ci]",
       "gitTag": false
     }]
   ]
