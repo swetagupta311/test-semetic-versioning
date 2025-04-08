@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## <small>1.0.3 (2025-04-08)</small>
+
+* refactor: changes ([ac1ee0e](https://github.com/swetagupta311/test-semetic-versioning/commit/ac1ee0e))
+
 ## <small>1.0.2 (2025-04-08)</small>
 
 * fix: sementic-release ([57782d8](https://github.com/swetagupta311/test-semetic-versioning/commit/57782d8))
