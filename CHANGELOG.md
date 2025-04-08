@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.7...v1.1.0) (2025-04-08)
+
+
+### Features
+
+* changes that target ([8f0f98b](https://github.com/swetagupta311/test-semetic-versioning/commit/8f0f98ba0bc38598e30feede5a8c0d76b0dfd064))
+
 ### [1.0.7](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.6...v1.0.7) (2025-04-03)
 
 
