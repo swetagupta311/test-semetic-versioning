@@ -52,7 +52,7 @@
     }],
     ["@semantic-release/changelog", {
       "changelogFile": "CHANGELOG.md",
-      "changelogTitle": "# Changelog - Production Branch"
+      "changelogTitle": "# Changelog - uat Branch"
     }],
     ["@semantic-release/npm", {
       "npmPublish": false
