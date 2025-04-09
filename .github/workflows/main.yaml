@@ -36,5 +36,5 @@ jobs:
         run: |
           npx semantic-release --branches prod
           NEW_VERSION=$(node -p "require('./package.json').version")
-          echo "new_release_version=${NEW_VERSION}-prod" >> $GITHUB_OUTPUT
-          echo "Version released: ${NEW_VERSION}-prod"
+          echo "new_release_version=${NEW_VERSION}" >> $GITHUB_OUTPUT
+          echo "Version released: ${NEW_VERSION}"
