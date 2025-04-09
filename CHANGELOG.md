@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.1.11](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.10-prod...v1.1.11-prod) (2025-04-09)
+
+
+### Bug Fixes
+
+* removved ([ab6f675](https://github.com/swetagupta311/test-semetic-versioning/commit/ab6f675195e44e1669a67099399c6da8a0504877))
+
 ### [1.1.10](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.9-prod...v1.1.10-prod) (2025-04-09)
 
 
