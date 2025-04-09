@@ -28,12 +28,19 @@ jobs:
         run: |
           npx semantic-release --branches prod
 
-      - name: Add -prod suffix to changelog version
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          sed -i 's/^\([0-9]\+\.[0-9]\+\.[0-9]\+\) /\1-prod /' CHANGELOG.md
+    - name: Add -prod suffix to changelog version
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+    
+        sed -i 's/^\([0-9]\+\.[0-9]\+\.[0-9]\+\) /\1-prod /' CHANGELOG.md
+
+        if git diff --quiet CHANGELOG.md; then
+          echo "No changes to CHANGELOG.md, skipping commit."
+        else
           git add CHANGELOG.md
           git commit -m "chore(changelog): append -prod suffix to versions [skip ci]"
           git push
+        fi
+
 
