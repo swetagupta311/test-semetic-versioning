@@ -1,6 +1,6 @@
 {
   "name": "pmi",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "private": true,
   "main": "index.js",
   "scripts": {
@@ -60,6 +60,6 @@
     "conventional-changelog-angular": "^8.0.0",
     "conventional-changelog-cli": "^2.2.2",
     "install": "^0.13.0",
-    "npm": "^11.2.0"
+    "npm": "^11.3.0"
   }
 }

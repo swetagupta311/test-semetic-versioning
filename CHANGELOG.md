@@ -1,3 +1,25 @@
+### [1.0.7](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.6...v1.0.7) (2025-04-09)
+
+
+### Bug Fixes
+
+* branch name ([09b7ff0](https://github.com/swetagupta311/test-semetic-versioning/commit/09b7ff05c0332cb6dbeecf6038ea126965c8f063))
+* branch name ([021b538](https://github.com/swetagupta311/test-semetic-versioning/commit/021b53867b7cdb643ade9c0acbd6c48906c9d9e6))
+* with branch name ([2264fb4](https://github.com/swetagupta311/test-semetic-versioning/commit/2264fb4209f3d0c87d083650ac290b8d88d90d5a))
+
+
+### Refactors
+
+* bkj,rkwshb ([c226b4b](https://github.com/swetagupta311/test-semetic-versioning/commit/c226b4bd2334629954dc3bada16fcd674ff4628c))
+* fgdfhxcvhjbkhvbc ([f5f291d](https://github.com/swetagupta311/test-semetic-versioning/commit/f5f291dab89def7fcfe7979c47c63a763cc05aa4))
+* last ([7252a34](https://github.com/swetagupta311/test-semetic-versioning/commit/7252a348d9f7dd20fa8046ed6329c98589cd78db))
+* version defined with branch name ([d1c3a47](https://github.com/swetagupta311/test-semetic-versioning/commit/d1c3a47e12ca23269616f1a3a82056acb4836df2))
+
+
+### Chores
+
+* changes ([2ccdafa](https://github.com/swetagupta311/test-semetic-versioning/commit/2ccdafa790a18895db1f54905e33f8529917689c))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
