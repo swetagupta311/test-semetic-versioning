@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.1.16](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.15-prod...v1.1.16-prod) (2025-04-09)
+
+
+### Bug Fixes
+
+* adding git tags ([13d6a38](https://github.com/swetagupta311/test-semetic-versioning/commit/13d6a3851e97b7a123a2748a420a4160d825789a))
+
 ### [1.1.15](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.14-prod...v1.1.15-prod) (2025-04-09)
 
 
