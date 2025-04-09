@@ -28,21 +28,31 @@ jobs:
         run: |
           npx semantic-release --branches prod
 
-      - name: Append -prod to CHANGELOG version
+      - name: Patch CHANGELOG.md with -prod suffix
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
+          # Get version like 1.1.8
           VERSION=$(node -p "require('./package.json').version")
           PROD_VERSION="${VERSION}-prod"
 
-          sed -i -E "s/^(${VERSION//./\\.}) (\([0-9]{4}-[0-9]{2}-[0-9]{2}\))\$/${PROD_VERSION} \2/" CHANGELOG.md
+          # Escape dots in version for sed
+          ESCAPED_VERSION=$(echo "$VERSION" | sed 's/\./\\./g')
 
+          # Match line like: 1.1.8 (2025-04-09) and replace with 1.1.8-prod (2025-04-09)
+          sed -i -E "0,/^${ESCAPED_VERSION} \(([0-9]{4}-[0-9]{2}-[0-9]{2})\)/s//${PROD_VERSION} (\1)/" CHANGELOG.md
+
+          # Show the result for debug
+          echo "🔍 Updated CHANGELOG.md:"
+          head -n 10 CHANGELOG.md
+
+          # Commit and push if modified
           if git diff --quiet CHANGELOG.md; then
-            echo "No changes to CHANGELOG.md"
+            echo "✅ No changes to commit"
           else
             git add CHANGELOG.md
-            git commit -m "chore(changelog): append -prod suffix to version ${PROD_VERSION} [skip ci]"
+            git commit -m "chore(changelog): add -prod to version ${PROD_VERSION} [skip ci]"
             git push
           fi
 
