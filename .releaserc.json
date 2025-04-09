@@ -55,11 +55,11 @@
       "changelogTitle": "# Changelog - Production Branch"
     }],   
     ["@semantic-release/npm", {
-      "npmPublish": false
+      "npmPublish": false,
+      "tag": "prod"
     }],
     ["@semantic-release/git", {
-      "assets": ["package.json", "CHANGELOG.md"],
-      "gitTag": false
+      "assets": ["package.json", "CHANGELOG.md"]
     }]
   ]
 }
