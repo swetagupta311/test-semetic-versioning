@@ -3,10 +3,10 @@
     {
       "name": "prod",
       "channel": "latest",
-      "prerelease": false
+      "prerelease": "prod"
     }
   ],
-  "tagFormat": "v${version}",
+  "tagFormat": "v${version}-prod",
   "plugins": [
     ["@semantic-release/commit-analyzer", {
       "preset": "angular",
@@ -50,7 +50,10 @@
         ]
       }
     }],
-    "@semantic-release/changelog",
+    ["@semantic-release/changelog", {
+      "changelogFile": "CHANGELOG.md",
+      "changelogTitle": "# Changelog - Production Branch"
+    }],   
     ["@semantic-release/npm", {
       "npmPublish": false
     }],
