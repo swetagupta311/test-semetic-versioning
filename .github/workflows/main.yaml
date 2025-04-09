@@ -27,3 +27,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           npx semantic-release --branches prod
+
+      - name: Add -prod suffix to changelog version
+        run: |
+          sed -i 's/^\([0-9]\+\.[0-9]\+\.[0-9]\+\) /\1-prod /' CHANGELOG.md
+          git add CHANGELOG.md
+          git commit -m "chore(changelog): append -prod suffix to versions [skip ci]"
+          git push
