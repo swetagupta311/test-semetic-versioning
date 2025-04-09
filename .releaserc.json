@@ -6,7 +6,7 @@
       "prerelease": "uat"
     }
   ],
-  "tagFormat": "v${version}",
+  "tagFormat": "v${version}-uat",
   "plugins": [
     ["@semantic-release/commit-analyzer", {
       "preset": "angular",
