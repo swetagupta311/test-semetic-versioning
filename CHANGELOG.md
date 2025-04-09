@@ -1,5 +1,13 @@
 # Changelog - Production Branch
 
+### [1.1.8](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.7-prod...v1.1.8-prod) (2025-04-09)
+
+
+### Chores
+
+* changelog ([c22f1a7](https://github.com/swetagupta311/test-semetic-versioning/commit/c22f1a7cbfb9dac36c00f284f532f33f65492f3d))
+* changelog ([4deb5d3](https://github.com/swetagupta311/test-semetic-versioning/commit/4deb5d3d843396aa6bbee4c712f159d4097e6bcc))
+
 ### [1.1.7](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.6-prod...v1.1.7-prod) (2025-04-09)
 
 
