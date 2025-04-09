@@ -30,5 +30,12 @@ jobs:
           NEW_VERSION=$(node -p "require('./package.json').version")
           PROD_VERSION="${NEW_VERSION}-prod"
           npm version "${PROD_VERSION}" --no-git-tag-version
-          echo "DEV_VERSION=${PROD_VERSION}" >> $GITHUB_ENV
-          echo "Released dev version: ${PROD_VERSION}"
+          echo "PROD_VERSION=${PROD_VERSION}" >> $GITHUB_ENV
+          echo "Released prod version: ${PROD_VERSION}"
+
+      - name: Tag Dev Release
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git tag -a "v${PROD_VERSION}" -m "Prod Release ${PROD_VERSION}"
+          git push origin "v${PROD_VERSION}"
