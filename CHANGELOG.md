@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.1.13](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.12-prod...v1.1.13-prod) (2025-04-09)
+
+
+### Bug Fixes
+
+* VHBIUGBIKWBUI ([640fa6e](https://github.com/swetagupta311/test-semetic-versioning/commit/640fa6e1a680fed241cc2f0915aa7a80b48b401f))
+
 ### [1.1.12](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.11-prod...v1.1.12-prod) (2025-04-09)
 
 
