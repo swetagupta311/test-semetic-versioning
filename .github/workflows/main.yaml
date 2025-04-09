@@ -1,41 +1,41 @@
-name: Release and Deployment
+name: Development Release
+
 on:
   push:
     branches: [prod]
   workflow_dispatch:
 
 jobs:
-  release:  
-    name: Release
+  release:
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.semantic-release.outputs.new_release_version }}
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+
+      - uses: actions/setup-node@v3
         with:
           node-version: '20'
-      
-      - name: Install dependencies
-        run: npm install
-             npm install -D conventional-changelog-angular
-      
-      - name: Semantic Release
-        id: semantic-release
+          cache: 'npm'
+
+      - run: npm install
+      - run: npm install -D conventional-changelog-angular
+
+      - name: Semantic Release (Production)
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           npx semantic-release --branches prod
           NEW_VERSION=$(node -p "require('./package.json').version")
-          echo "new_release_version=${NEW_VERSION}-prod" >> $GITHUB_OUTPUT
-          echo "Version released: ${NEW_VERSION}-prod"
+          PROD_VERSION="${NEW_VERSION}-prod"
+          npm version "${PROD_VERSION}" --no-git-tag-version
+          echo "DEV_VERSION=${PROD_VERSION}" >> $GITHUB_ENV
+          echo "Released dev version: ${PROD_VERSION}"
+
+      - name: Tag Dev Release
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git tag -a "v${PROD_VERSION}" -m "Prod Release ${PROD_VERSION}"
+          git push origin "v${PROD_VERSION}"
