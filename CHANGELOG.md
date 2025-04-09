@@ -1,5 +1,39 @@
 # Changelog - Production Branch
 
+### [1.1.3](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.2...v1.1.3) (2025-04-09)
+
+
+### Bug Fixes
+
+* changes ([e83354f](https://github.com/swetagupta311/test-semetic-versioning/commit/e83354faa64d99c59ec0d90520b8acd4acb51da8))
+* jinbkjujkjhjh ([c1582fd](https://github.com/swetagupta311/test-semetic-versioning/commit/c1582fd47f401b099abf6802c36c9dd17fec42a8))
+* removved ([ab6f675](https://github.com/swetagupta311/test-semetic-versioning/commit/ab6f675195e44e1669a67099399c6da8a0504877))
+* suffix ([af423ae](https://github.com/swetagupta311/test-semetic-versioning/commit/af423ae325c0ee2ea06eb065a66e48c79e1485c2))
+* to get branch name ([a9784b2](https://github.com/swetagupta311/test-semetic-versioning/commit/a9784b2339e4a2ffa23eaf54a8f9bb447d3eb9c2))
+* versioning ([87f657c](https://github.com/swetagupta311/test-semetic-versioning/commit/87f657c73d14bee48f6527b729c06b63cd97d55e))
+* VHBIUGBIKWBUI ([640fa6e](https://github.com/swetagupta311/test-semetic-versioning/commit/640fa6e1a680fed241cc2f0915aa7a80b48b401f))
+
+
+### Chores
+
+* changelog ([c22f1a7](https://github.com/swetagupta311/test-semetic-versioning/commit/c22f1a7cbfb9dac36c00f284f532f33f65492f3d))
+* changelog ([4deb5d3](https://github.com/swetagupta311/test-semetic-versioning/commit/4deb5d3d843396aa6bbee4c712f159d4097e6bcc))
+* changelog ([fc34108](https://github.com/swetagupta311/test-semetic-versioning/commit/fc341086a5d2d472c20307e8873538159d7abba3))
+* changelog versioning ([a72ad65](https://github.com/swetagupta311/test-semetic-versioning/commit/a72ad65e02e4d2f4d595b60c5bc6458b3a2f11f7))
+* changes ([52085d6](https://github.com/swetagupta311/test-semetic-versioning/commit/52085d6e0bcc6631a93d21387377a725e2fd5ad1))
+* changes changelog ([71f6e47](https://github.com/swetagupta311/test-semetic-versioning/commit/71f6e47054efd9f5db55b6e7e5d2e6abea49c3f6))
+* **release:** 1.1.10 [skip ci] ([443d0f3](https://github.com/swetagupta311/test-semetic-versioning/commit/443d0f392b4515136a16ffb02ac27644ef234e13))
+* **release:** 1.1.11 [skip ci] ([cec7a37](https://github.com/swetagupta311/test-semetic-versioning/commit/cec7a37ca523ab81201a973cd848eb5650b97b0e))
+* **release:** 1.1.12 [skip ci] ([3ff1f06](https://github.com/swetagupta311/test-semetic-versioning/commit/3ff1f06bdcdef7429fd62fb5f9124a2b54ae7ce3))
+* **release:** 1.1.13 [skip ci] ([74a3cc0](https://github.com/swetagupta311/test-semetic-versioning/commit/74a3cc084ab331ac225bfa7de1ab2210a0b15ed2))
+* **release:** 1.1.3 [skip ci] ([85c015b](https://github.com/swetagupta311/test-semetic-versioning/commit/85c015be2f00a3b327901456470c088b9ee9bc3d))
+* **release:** 1.1.4 [skip ci] ([ecdb26d](https://github.com/swetagupta311/test-semetic-versioning/commit/ecdb26daf0e6ce057a3de88f429b8d5bb75414c7))
+* **release:** 1.1.5 [skip ci] ([88a12b9](https://github.com/swetagupta311/test-semetic-versioning/commit/88a12b9cfdce24c5f8b44a36448b9aa285c26aed))
+* **release:** 1.1.6 [skip ci] ([8f48c13](https://github.com/swetagupta311/test-semetic-versioning/commit/8f48c138a53bfa8f1053188555576ffd8d3d73cb))
+* **release:** 1.1.7 [skip ci] ([5a6ca56](https://github.com/swetagupta311/test-semetic-versioning/commit/5a6ca5641ed0b6ec8bb683174d664c9ec3b67057))
+* **release:** 1.1.8 [skip ci] ([1a1c171](https://github.com/swetagupta311/test-semetic-versioning/commit/1a1c17183d71185c4ad4acb5e825f16051b4a3c4))
+* **release:** 1.1.9 [skip ci] ([a30696b](https://github.com/swetagupta311/test-semetic-versioning/commit/a30696ba41fc90aab5e4be7cb1413d3048b0e95f))
+
 ### [1.1.13](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.12-prod...v1.1.13-prod) (2025-04-09)
 
 
