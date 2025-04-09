@@ -1,3 +1,12 @@
+# Changelog - Production Branch
+
+### [1.1.3](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.2-prod...v1.1.3-prod) (2025-04-09)
+
+
+### Bug Fixes
+
+* to get branch name ([a9784b2](https://github.com/swetagupta311/test-semetic-versioning/commit/a9784b2339e4a2ffa23eaf54a8f9bb447d3eb9c2))
+
 ### [1.1.2](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.1...v1.1.2) (2025-04-09)
 
 
