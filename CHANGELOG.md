@@ -1,3 +1,10 @@
+### [1.1.2](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.1...v1.1.2) (2025-04-09)
+
+
+### Refactors
+
+* changes ([8f0d6ca](https://github.com/swetagupta311/test-semetic-versioning/commit/8f0d6ca358b76ef7363e181140b126050b746c5f))
+
 ### [1.1.1](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.0...v1.1.1) (2025-04-09)
 
 
