@@ -8,9 +8,6 @@
   ],
   "tagFormat": "v${version}",
   "plugins": [
-    ["@semantic-release/exec", {
-      "prepareCmd": "git tag -d v${nextRelease.version} || true && git push origin :refs/tags/v${nextRelease.version} || true"
-    }],
     ["@semantic-release/commit-analyzer", {
       "preset": "angular",
       "releaseRules": [

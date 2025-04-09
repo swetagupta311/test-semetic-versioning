@@ -34,7 +34,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          npx semantic-release
+          npx semantic-release --branches prod
           NEW_VERSION=$(node -p "require('./package.json').version")
           echo "new_release_version=${NEW_VERSION}" >> $GITHUB_OUTPUT
-          echo "Version released: ${NEW_VERSION}"
+          echo "Version released: ${NEW_VERSION}-prod"
