@@ -1,4 +1,4 @@
-name: Production Release  # Changed from "Development Release" to match branch
+name: Production Release
 
 on:
   push:
@@ -26,24 +26,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          # Force the version format with branch name
-          echo "Configuring version format..."
-          echo "version=1.1.2-prod" >> $GITHUB_OUTPUT
           npx semantic-release --branches prod
-          NEW_VERSION=$(node -p "require('./package.json').version")
-          echo "PROD_VERSION=${NEW_VERSION}" >> $GITHUB_ENV
-          echo "Released prod version: ${NEW_VERSION}"
 
-      - name: Update Changelog with Branch Name
-        run: |
-          # Modify the changelog to include branch name
-          sed -i "s/^## \[\([0-9]\+\.[0-9]\+\.[0-9]\+\)\]/## [\1-prod]/g" CHANGELOG.md
-          git add CHANGELOG.md
-          git commit -m "chore: update changelog with branch suffix" || echo "No changelog changes to commit"
-
-      - name: Tag Release
+      - name: Tag Dev Release
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git tag -a "v${PROD_VERSION}-prod" -m "Prod Release ${PROD_VERSION}-prod"
-          git push origin "v${PROD_VERSION}-prod"
+          git tag -a "v${PROD_VERSION}" -m "Prod Release ${PROD_VERSION}"
+          git push origin "v${PROD_VERSION}"
