@@ -6,7 +6,7 @@
       "prerelease": "prod"
     }
   ],
-  "tagFormat": "v${version}",
+  "tagFormat": "v${version}-prod",
   "plugins": [
     ["@semantic-release/commit-analyzer", {
       "preset": "angular",
@@ -55,11 +55,11 @@
       "changelogTitle": "# Changelog - Production Branch"
     }],   
     ["@semantic-release/npm", {
-      "npmPublish": false,
-      "tag": "prod"
+      "npmPublish": false
     }],
     ["@semantic-release/git", {
-      "assets": ["package.json", "CHANGELOG.md"]
+      "assets": ["package.json", "CHANGELOG.md"],
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     }]
   ]
 }
