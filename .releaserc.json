@@ -3,7 +3,7 @@
     {
       "name": "uat",
       "channel": "latest",
-      "prerelease": false
+      "prerelease": "uat"
     }
   ],
   "tagFormat": "v${version}",
@@ -50,14 +50,17 @@
         ]
       }
     }],
-    "@semantic-release/changelog",
+    ["@semantic-release/changelog", {
+      "changelogFile": "CHANGELOG.md",
+      "changelogTitle": "# Changelog - Production Branch"
+    }],
     ["@semantic-release/npm", {
       "npmPublish": false
     }],
     ["@semantic-release/git", {
       "assets": ["package.json", "CHANGELOG.md"],
-      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
-      "gitTag": false
-    }]
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+    }],
+      "@semantic-release/github"
   ]
 }
