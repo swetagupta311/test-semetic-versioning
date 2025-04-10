@@ -9,50 +9,25 @@ const outputFile = 'UNIFIED_CHANGELOG.md';
 
 // Function to parse a changelog file
 function parseChangelog(branchName) {
-  console.log(`\n========== Processing Branch: ${branchName} ==========`);
   try {
     // Save current branch
     const currentBranch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
-    console.log(`Current branch before checkout: ${currentBranch}`);
     
     // Checkout the branch to access its changelog
-    console.log(`Attempting to checkout branch: ${branchName}`);
-    execSync(`git checkout ${branchName}`, { stdio: 'inherit' });
-    
-    // Verify we're on the right branch
-    const verifyBranch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
-    console.log(`Branch after checkout: ${verifyBranch}`);
+    execSync(`git checkout ${branchName}`, { stdio: 'pipe' });
     
     const changelogPath = path.join(process.cwd(), 'CHANGELOG.md');
-    console.log(`Looking for changelog at: ${changelogPath}`);
-    
     if (!fs.existsSync(changelogPath)) {
       console.warn(`No CHANGELOG.md found for branch ${branchName}`);
       // Return to original branch
-      console.log(`Returning to branch: ${currentBranch}`);
-      execSync(`git checkout ${currentBranch}`, { stdio: 'inherit' });
+      execSync(`git checkout ${currentBranch}`, { stdio: 'pipe' });
       return [];
     }
     
-    // Read changelog content
-    console.log(`Reading changelog for branch ${branchName}...`);
     const content = fs.readFileSync(changelogPath, 'utf8');
-    
-    // Debug: Show the first few lines of the changelog
-    const previewLines = content.split('\n').slice(0, 10).join('\n');
-    console.log(`\nChangelog preview (first 10 lines):\n${previewLines}\n`);
-    
-    // Parse changelog with various format attempts
     const entries = [];
-    console.log('Attempting to parse changelog entries...');
     
-    // Try parsing with format: "1.1.19 (2025-04-10)"
-    const versionRegex1 = /^(\d+\.\d+\.\d+) \((\d{4}-\d{2}-\d{2})\)$/;
-    // Also try format with potential title or header: "## 1.1.19 (2025-04-10)"
-    const versionRegex2 = /^## (\d+\.\d+\.\d+) \((\d{4}-\d{2}-\d{2})\)$/;
-    // Another variation: "## [1.1.19](url) (2025-04-10)"
-    const versionRegex3 = /^## \[(\d+\.\d+\.\d+)\].*\((\d{4}-\d{2}-\d{2})\)$/;
-    
+    // Split content into lines
     const lines = content.split('\n');
     
     let currentVersion = null;
@@ -60,48 +35,47 @@ function parseChangelog(branchName) {
     let currentSection = null;
     let currentChanges = [];
     
+    // This regex matches version headers like "1.1.19 (2025-04-10)"
+    const versionRegex = /^(\d+\.\d+\.\d+) \((\d{4}-\d{2}-\d{2})\)$/;
+    
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
       
-      // Try all version regex patterns
-      const versionMatch1 = line.match(versionRegex1);
-      const versionMatch2 = line.match(versionRegex2);
-      const versionMatch3 = line.match(versionRegex3);
-      const versionMatch = versionMatch1 || versionMatch2 || versionMatch3;
+      // Skip empty lines
+      if (!line) continue;
+      
+      // Check if line is a version header
+      const versionMatch = line.match(versionRegex);
       
       if (versionMatch) {
-        console.log(`Found version: ${versionMatch[1]}, date: ${versionMatch[2]}`);
-        
         // Save previous entry if exists
         if (currentVersion) {
           entries.push({
             branch: branchName,
             version: currentVersion,
             date: currentDate,
-            sections: currentChanges
+            sections: [...currentChanges] // Copy the array
           });
-          console.log(`Added entry for version ${currentVersion} with ${currentChanges.length} changes`);
+          currentChanges = []; // Reset changes
         }
         
-        currentVersion = versionMatch[1];
-        currentDate = versionMatch[2]; // Format: YYYY-MM-DD
-        currentChanges = [];
+        currentVersion = versionMatch[1]; // e.g., "1.1.19"
+        currentDate = versionMatch[2];    // e.g., "2025-04-10"
         currentSection = null;
       } 
-      // Match section headers (non-indented lines that aren't version numbers)
-      else if (line && !line.startsWith(' ') && !line.startsWith('\t') && 
-              !versionRegex1.test(line) && !versionRegex2.test(line) && !versionRegex3.test(line)) {
+      // Check if line is a section header (not indented and not a version line)
+      else if (!line.startsWith(' ') && !line.startsWith('\t') && !versionRegex.test(line)) {
         currentSection = line;
-        console.log(`Found section: ${currentSection}`);
       } 
-      // Match changes (indented lines)
-      else if ((line.startsWith('    ') || line.startsWith('* ') || line.startsWith('- ')) && currentSection) {
-        const message = line.trim().replace(/^[\*\-]\s+/, '');
+      // Check if line is an indented change entry
+      else if (line.startsWith('    ') && currentSection && currentVersion) {
+        // Extract the commit message
+        const message = line.trim();
+        
         currentChanges.push({
           section: currentSection,
           message: message
         });
-        console.log(`Added change under "${currentSection}": ${message}`);
       }
     }
     
@@ -111,25 +85,21 @@ function parseChangelog(branchName) {
         branch: branchName,
         version: currentVersion,
         date: currentDate,
-        sections: currentChanges
+        sections: [...currentChanges]
       });
-      console.log(`Added final entry for version ${currentVersion} with ${currentChanges.length} changes`);
     }
     
     // Return to original branch
-    console.log(`Returning to branch: ${currentBranch}`);
-    execSync(`git checkout ${currentBranch}`, { stdio: 'inherit' });
+    execSync(`git checkout ${currentBranch}`, { stdio: 'pipe' });
     
-    console.log(`Total entries found for ${branchName}: ${entries.length}`);
+    console.log(`Found ${entries.length} entries in ${branchName}`);
     return entries;
   } catch (error) {
     console.error(`Error processing branch ${branchName}:`, error.message);
-    console.error(error.stack);
     // Try to return to original branch on error
     try {
       const currentBranch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
-      console.log(`Attempting to return to branch: ${currentBranch} after error`);
-      execSync(`git checkout ${currentBranch}`, { stdio: 'inherit' });
+      execSync(`git checkout ${currentBranch}`, { stdio: 'pipe' });
     } catch (e) {
       console.error('Failed to return to original branch:', e.message);
     }
@@ -140,20 +110,17 @@ function parseChangelog(branchName) {
 // Main function
 function generateUnifiedChangelog() {
   try {
+    // Parse changelogs from all branches
     console.log('Starting to gather changelogs from branches...');
     let allEntries = [];
     
     for (const branch of branches) {
+      console.log(`Processing branch: ${branch}`);
       const entries = parseChangelog(branch);
       allEntries = [...allEntries, ...entries];
     }
     
-    console.log(`Total entries gathered from all branches: ${allEntries.length}`);
-    if (allEntries.length === 0) {
-      console.log('No entries found. Writing empty changelog.');
-      fs.writeFileSync(outputFile, '# Unified Changelog\n\nNo entries found.', 'utf8');
-      return;
-    }
+    console.log(`Total entries from all branches: ${allEntries.length}`);
     
     // Sort entries by date (newest first)
     allEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -172,7 +139,7 @@ function generateUnifiedChangelog() {
     let unifiedChangelog = '# Unified Changelog\n\n';
     
     for (const date in entriesByDate) {
-      // Format date as is (YYYY-MM-DD)
+      // Use date as heading
       unifiedChangelog += `## ${date}\n\n`;
       
       // Group entries by branch
@@ -219,17 +186,7 @@ function generateUnifiedChangelog() {
     
   } catch (error) {
     console.error('Error generating unified changelog:', error);
-    console.error(error.stack);
   }
-}
-
-// List files in directory for debugging
-console.log('Files in current directory:');
-try {
-  const files = fs.readdirSync(process.cwd());
-  console.log(files.join('\n'));
-} catch (e) {
-  console.error('Error listing files:', e.message);
 }
 
 // Run the script
