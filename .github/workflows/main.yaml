@@ -28,3 +28,14 @@ jobs:
         run: |
           npx semantic-release --branches prod
 
+      - name: Generate Unified Changelog
+        run: node generate-unified-changelog.js
+      - name: Commit Unified Changelog
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add UNIFIED_CHANGELOG.md
+          git commit -m "chore: update unified changelog [skip ci]" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
