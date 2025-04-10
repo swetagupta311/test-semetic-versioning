@@ -1,5 +1,17 @@
 # Changelog - Production Branch
 
+### [1.1.24](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.23-prod...v1.1.24-prod) (2025-04-10)
+
+
+### Bug Fixes
+
+* changelog1 ([ee9b016](https://github.com/swetagupta311/test-semetic-versioning/commit/ee9b016f483d429c6cab7e5935772fad48a79bd8))
+
+
+### Chores
+
+* update unified changelog [skip ci] ([dc03074](https://github.com/swetagupta311/test-semetic-versioning/commit/dc03074f173d240e80817b3f0a06fc306ac22d25))
+
 ### [1.1.23](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.22-prod...v1.1.23-prod) (2025-04-10)
 
 
