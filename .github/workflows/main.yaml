@@ -30,12 +30,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
+          # Delete existing changelog if it exists
+          rm -f CHANGELOG-${{ steps.branch-name.outputs.BRANCH_NAME }}.md
+          
+          # Run semantic-release
           npx semantic-release
-          # Rename the temp changelog to branch-specific name
-          mv CHANGELOG-uat.md CHANGELOG-${{ steps.branch-name.outputs.BRANCH_NAME }}.md
-          git add CHANGELOG-*.md
-          git commit -m "chore: rename changelog [skip ci]" || echo "No changes to commit"
-          git push
+          
+          # Rename the temp file only if it exists
+          if [ -f "CHANGELOG-TEMP.md" ]; then
+            mv CHANGELOG-TEMP.md CHANGELOG-${{ steps.branch-name.outputs.BRANCH_NAME }}.md
+            git add CHANGELOG-*.md
+            git commit -m "chore: update branch changelog [skip ci]" || echo "No changes to commit"
+            git push
+          fi
 
   combine-changelogs:
     needs: release
@@ -48,12 +55,16 @@ jobs:
       - name: Generate Combined Changelog
         run: |
           # Create fresh combined changelog
-          echo "# Release History\n" > CHANGELOG.md
-          echo "> Combined changelog from all branches\n" >> CHANGELOG.md
+          echo "# Combined Release History" > CHANGELOG.md
+          echo "\n> Automatically generated from all branches\n" >> CHANGELOG.md
 
-          # Find all branch changelogs and process by date
-          find . -name "CHANGELOG-*.md" -exec grep -l "" {} + | while read -r file; do
-            BRANCH=$(echo "$file" | sed 's/.*CHANGELOG-//; s/.md//')
+          # Process all branch changelogs by date
+          for file in CHANGELOG-*.md; do
+            [ -e "$file" ] || continue  # handle case with no matches
+            
+            BRANCH=${file#CHANGELOG-}
+            BRANCH=${BRANCH%.md}
+            
             VERSION=$(grep -m1 "^## " "$file" | sed 's/^## //; s/ (.*//')
             DATE=$(grep -m1 "(20" "$file" | grep -oE "[0-9]{4}-[0-9]{2}-[0-9]{2}" || date +'%Y-%m-%d')
 
@@ -64,16 +75,17 @@ jobs:
 
             # Add branch entry
             echo -e "\n### ${BRANCH} (v${VERSION})" >> CHANGELOG.md
+            # Skip first two lines (title and blank line)
             tail -n +3 "$file" >> CHANGELOG.md
           done
 
           # Final formatting
           echo -e "\n---\n" >> CHANGELOG.md
-          echo "Generated at $(date)" >> CHANGELOG.md
+          echo "Last updated: $(date -u)" >> CHANGELOG.md
 
           # Commit changes
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add CHANGELOG.md
           git commit -m "chore: update combined changelog [skip ci]"
-          git push 
+          git push

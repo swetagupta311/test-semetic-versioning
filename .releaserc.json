@@ -55,7 +55,7 @@
       }
     }],
     ["@semantic-release/changelog", {
-      "changelogFile": "CHANGELOG-uat.md"
+      "changelogFile": "CHANGELOG-TEMP.md"
           }],
     ["@semantic-release/npm", {
       "npmPublish": false
