@@ -1,5 +1,12 @@
 # Changelog - uat Branch
 
+### [1.0.1](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.0-uat...v1.0.1-uat) (2025-04-10)
+
+
+### Bug Fixes
+
+* changes ([9bfc77e](https://github.com/swetagupta311/test-semetic-versioning/commit/9bfc77e9a15e8123d0bcb816b1693624abcedffe))
+
 ## 1.0.0 (2025-04-09)
 
 
