@@ -28,7 +28,7 @@ jobs:
           npx semantic-release --branches uat
 
   merge-changelogs:
-    needs: [release-prod, release-dev] 
+    needs: [uat, prod] 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
