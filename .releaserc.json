@@ -4,9 +4,13 @@
       "name": "uat",
       "channel": "latest",
       "prerelease": "uat"
+    },    {
+      "name": "prod",
+      "channel": "latest",
+      "prerelease": false
     }
   ],
-  "tagFormat": "v${version}-uat",
+  "tagFormat": "v${version}-${branch.name}",
   "plugins": [
     ["@semantic-release/commit-analyzer", {
       "preset": "angular",
@@ -52,8 +56,8 @@
     }],
     ["@semantic-release/changelog", {
       "changelogFile": "CHANGELOG-${branch.name}.md",
-      "changelogTitle": "# Changelog - uat Branch"
-    }],
+      "changelogTitle": "# ${branch.name.toUpperCase()} Changelog"
+          }],
     ["@semantic-release/npm", {
       "npmPublish": false
     }],
