@@ -51,14 +51,14 @@
       }
     }],
     ["@semantic-release/changelog", {
-      "changelogFile": "CHANGELOG.md",
+      "changelogFile": "CHANGELOG-${branch.name}.md",
       "changelogTitle": "# Changelog - uat Branch"
     }],
     ["@semantic-release/npm", {
       "npmPublish": false
     }],
     ["@semantic-release/git", {
-      "assets": ["package.json", "CHANGELOG.md"],
+      "assets": ["package.json", "CHANGELOG-${branch.name}.md"],
       "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     }],
       "@semantic-release/github"

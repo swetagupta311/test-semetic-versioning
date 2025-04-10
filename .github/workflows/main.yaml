@@ -26,3 +26,35 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           npx semantic-release --branches uat
+
+  merge-changelogs:
+    needs: [release-prod, release-dev] 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Combine Changelogs (Date-wise)
+        run: |
+          echo "# Combined Changelog\n" > CHANGELOG.md
+
+          for branch in prod dev; do
+            if [ -f "CHANGELOG-${branch}.md" ]; then
+              VERSION=$(grep -m 1 "^## " "CHANGELOG-${branch}.md" | sed 's/^## //; s/ (.*//')
+              
+              DATE=$(grep -m 1 "^## " "CHANGELOG-${branch}.md" | grep -oE "[0-9]{4}-[0-9]{2}-[0-9]{2}" || date +'%Y-%m-%d')
+
+              if ! grep -q "## $DATE" CHANGELOG.md; then
+                echo -e "\n## $DATE" >> CHANGELOG.md
+              fi
+
+              echo -e "\n### ${branch} (v${VERSION})" >> CHANGELOG.md
+
+              tail -n +3 "CHANGELOG-${branch}.md" >> CHANGELOG.md
+            fi
+          done
+
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add CHANGELOG.md
+          git commit -m "chore: update combined changelog [skip ci]"
+          git push          
