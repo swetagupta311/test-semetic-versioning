@@ -4,7 +4,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 
 // Configuration
-const branches = ['prod', 'uat', 'socket'];
+const branches = ['prod', 'uat'];
 const outputFile = 'UNIFIED_CHANGELOG.md';
 
 // Function to parse a changelog file with your specific format
