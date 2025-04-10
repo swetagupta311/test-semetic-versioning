@@ -2,14 +2,14 @@ name: Release and Deployment
 
 on:
   push:
-    branches: [uat, prod]
+    branches: [uat, prod]  
   workflow_dispatch:
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
@@ -22,70 +22,9 @@ jobs:
       - run: npm install
       - run: npm install -D conventional-changelog-angular
 
-      - name: Get Branch Name
-        id: branch-name
-        run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
-
-      - name: Run Semantic Release
+      - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          # Delete existing changelog if it exists
-          rm -f CHANGELOG-${{ steps.branch-name.outputs.BRANCH_NAME }}.md
-          
-          # Run semantic-release
-          npx semantic-release
-          
-          # Rename the temp file only if it exists
-          if [ -f "CHANGELOG-TEMP.md" ]; then
-            mv CHANGELOG-TEMP.md CHANGELOG-${{ steps.branch-name.outputs.BRANCH_NAME }}.md
-            git add CHANGELOG-*.md
-            git commit -m "chore: update branch changelog [skip ci]" || echo "No changes to commit"
-            git push
-          fi
+          npx semantic-release --branches uat
 
-  combine-changelogs:
-    needs: release
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Generate Combined Changelog
-        run: |
-          # Create fresh combined changelog
-          echo "# Combined Release History" > CHANGELOG.md
-          echo "\n> Automatically generated from all branches\n" >> CHANGELOG.md
-
-          # Process all branch changelogs by date
-          for file in CHANGELOG-*.md; do
-            [ -e "$file" ] || continue  # handle case with no matches
-            
-            BRANCH=${file#CHANGELOG-}
-            BRANCH=${BRANCH%.md}
-            
-            VERSION=$(grep -m1 "^## " "$file" | sed 's/^## //; s/ (.*//')
-            DATE=$(grep -m1 "(20" "$file" | grep -oE "[0-9]{4}-[0-9]{2}-[0-9]{2}" || date +'%Y-%m-%d')
-
-            # Add date section if new
-            if ! grep -q "## $DATE" CHANGELOG.md; then
-              echo -e "\n## $DATE" >> CHANGELOG.md
-            fi
-
-            # Add branch entry
-            echo -e "\n### ${BRANCH} (v${VERSION})" >> CHANGELOG.md
-            # Skip first two lines (title and blank line)
-            tail -n +3 "$file" >> CHANGELOG.md
-          done
-
-          # Final formatting
-          echo -e "\n---\n" >> CHANGELOG.md
-          echo "Last updated: $(date -u)" >> CHANGELOG.md
-
-          # Commit changes
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add CHANGELOG.md
-          git commit -m "chore: update combined changelog [skip ci]"
-          git push
