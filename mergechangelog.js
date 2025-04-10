@@ -2,24 +2,18 @@
 const fs = require('fs');
 const { execSync } = require('child_process');
 
-// Configuration
 const branches = ['prod', 'uat'];
 const outputFile = 'UNIFIED_CHANGELOG.md';
-// How many days of history to include (adjust as needed)
 const daysToInclude = 30;
 
-// Function to get commit history for a branch
 function getCommitHistory(branchName) {
   try {
     console.log(`Getting commit history for branch: ${branchName}`);
     
-    // Save current branch
     const currentBranch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
     
-    // Checkout the branch
     execSync(`git checkout ${branchName}`, { stdio: 'pipe' });
     
-    // Get commits from the last X days, format: hash, date, message
     const sinceDate = new Date();
     sinceDate.setDate(sinceDate.getDate() - daysToInclude);
     const sinceDateStr = sinceDate.toISOString().split('T')[0];
