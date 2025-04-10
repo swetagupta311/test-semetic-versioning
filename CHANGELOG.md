@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.1.22](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.21-prod...v1.1.22-prod) (2025-04-10)
+
+
+### Bug Fixes
+
+* to teke changelogs ([8960642](https://github.com/swetagupta311/test-semetic-versioning/commit/89606424c3ae74a9dc0d918c263824e2e01dd103))
+
 ### [1.1.21](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.20-prod...v1.1.21-prod) (2025-04-10)
 
 
