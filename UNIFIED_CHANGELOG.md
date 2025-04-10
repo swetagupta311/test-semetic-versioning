@@ -4,10 +4,12 @@
 
 ### PROD
 
-#### 1.1.24
+#### 1.1.25
 
 **Chore**
 
+- chore(release): 1.1.25 [skip ci] (49c62e8)
+- chore: update unified changelog [skip ci] (834e62f)
 - chore(release): 1.1.24 [skip ci] (09cfe57)
 - chore: update unified changelog [skip ci] (dc03074)
 - chore(release): 1.1.23 [skip ci] (975daab)
@@ -23,6 +25,7 @@
 
 **Fix**
 
+- fix: changelog2 (dd4d47a)
 - fix: changelog1 (ee9b016)
 - fix: make changelog (4e581b7)
 - fix: to teke changelogs (8960642)
@@ -37,7 +40,7 @@
 
 ### UAT
 
-#### 1.1.24
+#### 1.1.25
 
 **Chore**
 
@@ -66,7 +69,7 @@
 
 ### PROD
 
-#### 1.1.24
+#### 1.1.25
 
 **Chore**
 
@@ -128,7 +131,7 @@
 
 ### UAT
 
-#### 1.1.24
+#### 1.1.25
 
 **Chore**
 
@@ -149,7 +152,7 @@
 
 ### PROD
 
-#### 1.1.24
+#### 1.1.25
 
 **Refactor**
 
@@ -192,7 +195,7 @@
 
 ### UAT
 
-#### 1.1.24
+#### 1.1.25
 
 **Chore**
 
@@ -206,7 +209,7 @@
 
 ### UAT
 
-#### 1.1.24
+#### 1.1.25
 
 **Chore**
 
@@ -256,7 +259,7 @@
 
 ### PROD
 
-#### 1.1.24
+#### 1.1.25
 
 **Chore**
 
@@ -268,7 +271,7 @@
 
 ### UAT
 
-#### 1.1.24
+#### 1.1.25
 
 **Chore**
 
@@ -297,7 +300,7 @@
 
 ### PROD
 
-#### 1.1.24
+#### 1.1.25
 
 **Chore**
 
@@ -323,7 +326,7 @@
 
 ### UAT
 
-#### 1.1.24
+#### 1.1.25
 
 **Other**
 
@@ -336,7 +339,7 @@
 
 ### PROD
 
-#### 1.1.24
+#### 1.1.25
 
 **Chore**
 
@@ -380,7 +383,7 @@
 
 ### UAT
 
-#### 1.1.24
+#### 1.1.25
 
 **Other**
 
