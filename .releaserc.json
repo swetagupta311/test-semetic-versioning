@@ -10,7 +10,7 @@
       "prerelease": false
     }
   ],
-  "tagFormat": "v${version}-${branch}",
+  "tagFormat": "v${version}-uat",
   "plugins": [
     ["@semantic-release/commit-analyzer", {
       "preset": "angular",
@@ -55,7 +55,7 @@
       }
     }],
     ["@semantic-release/changelog", {
-      "changelogFile": "CHANGELOG-${branch}.md"
+      "changelogFile": "CHANGELOG-uat.md"
           }],
     ["@semantic-release/npm", {
       "npmPublish": false
