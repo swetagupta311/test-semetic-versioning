@@ -29,7 +29,7 @@ jobs:
           npx semantic-release --branches prod
 
       - name: Generate Unified Changelog
-        run: node generate-unified-changelog.js
+        run: node mergechangelog.js
       - name: Commit Unified Changelog
         run: |
           git config --local user.email "action@github.com"
