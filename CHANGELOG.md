@@ -1,3 +1,28 @@
+# Changelog - Production Branch
+
+### [1.0.2](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.1-uat...v1.0.2-uat) (2025-04-10)
+
+
+### Bug Fixes
+
+* changelog for uat to merge in unifiend changelog ([688f046](https://github.com/swetagupta311/test-semetic-versioning/commit/688f046086dbd5d53f4a503d43051bb20acb8e41))
+
+
+### CI/CD
+
+* combined changelog 1st ([363b45e](https://github.com/swetagupta311/test-semetic-versioning/commit/363b45e15656891a2424da1c6301863e521bdf95))
+* combined changelog 2nd ([d31d07f](https://github.com/swetagupta311/test-semetic-versioning/commit/d31d07f4647b7bdca6001e913202cd3900a8d0b0))
+* combined changelog 3nd ([3393c35](https://github.com/swetagupta311/test-semetic-versioning/commit/3393c3515e889bd1a58d1115d5b1b2bf5c33db38))
+* combined changelog 4 ([8d26634](https://github.com/swetagupta311/test-semetic-versioning/commit/8d2663461f5f11c2f0644077b7e531652903387d))
+* combined changelog 5 ([83e4716](https://github.com/swetagupta311/test-semetic-versioning/commit/83e4716c364af53a4daa3844965d1cece59ba11b))
+* combined changelog 7 ([8e6e37d](https://github.com/swetagupta311/test-semetic-versioning/commit/8e6e37deee8bb3fc3a1ac51a0c5e9b285ffede84))
+
+
+### Chores
+
+* **release:** 1.0.2-uat.1 [skip ci] ([c00d2bc](https://github.com/swetagupta311/test-semetic-versioning/commit/c00d2bc5c0327bd92674d41a7a81338047e91e83))
+* **release:** 1.0.2-uat.2 [skip ci] ([126a7a7](https://github.com/swetagupta311/test-semetic-versioning/commit/126a7a728850b8f83f1a0bc4513440806eec17be))
+
 # Changelog - uat Branch
 
 ### [1.0.1](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.0-uat...v1.0.1-uat) (2025-04-10)
