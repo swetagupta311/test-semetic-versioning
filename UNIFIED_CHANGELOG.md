@@ -1,292 +1,371 @@
 # Unified Changelog
 
-## 1.1.2 (2025-04-09)
+This document combines release notes from all branches.
 
-### PROD
-
-**Build**
-
-- build: Merge UAT into master while keeping .github/specific-file.yml unchanged (af13b4f, 2025-03-28)
-- build: testing changes (d561515, 2025-03-28)
-- build: testing changes (1f6dfd1, 2025-03-28)
-
-**Chore**
-
-- chore(release): 1.1.31 [skip ci] (84bded3, 2025-04-11)
-- chore: update unified changelog [skip ci] (27288cb, 2025-04-11)
-- chore(release): 1.1.30 [skip ci] (0db5629, 2025-04-11)
-- chore: update unified changelog [skip ci] (8084c34, 2025-04-11)
-- chore(release): 1.1.29 [skip ci] (27c735e, 2025-04-11)
-- chore: update unified changelog [skip ci] (7f435c6, 2025-04-11)
-- chore(release): 1.1.28 [skip ci] (0452b10, 2025-04-11)
-- chore: update unified changelog [skip ci] (700c4e3, 2025-04-11)
-- chore(release): 1.1.27 [skip ci] (c2770de, 2025-04-11)
-- chore: update unified changelog [skip ci] (ae828b7, 2025-04-10)
-- chore(release): 1.1.26 [skip ci] (f5dc2e9, 2025-04-10)
-- chore: update unified changelog [skip ci] (a5d7fe8, 2025-04-10)
-- chore(release): 1.1.25 [skip ci] (49c62e8, 2025-04-10)
-- chore: update unified changelog [skip ci] (834e62f, 2025-04-10)
-- chore(release): 1.1.24 [skip ci] (09cfe57, 2025-04-10)
-- chore: update unified changelog [skip ci] (dc03074, 2025-04-10)
-- chore(release): 1.1.23 [skip ci] (975daab, 2025-04-10)
-- chore: update unified changelog [skip ci] (30ece65, 2025-04-10)
-- chore(release): 1.1.22 [skip ci] (8de048d, 2025-04-10)
-- chore(release): 1.1.21 [skip ci] (1972383, 2025-04-10)
-- chore: update unified changelog [skip ci] (88e54f3, 2025-04-10)
-- chore(release): 1.1.20 [skip ci] (d452d21, 2025-04-10)
-- chore: update unified changelog [skip ci] (c200612, 2025-04-10)
-- chore(release): 1.1.19 [skip ci] (851c9f5, 2025-04-10)
-- chore(release): 1.1.18 [skip ci] (8288be7, 2025-04-10)
-- chore(release): 1.1.17 [skip ci] (fc901f6, 2025-04-10)
-- chore(release): 1.1.16 [skip ci] (811f28b, 2025-04-09)
-- chore(release): 1.1.15 [skip ci] (c23ba58, 2025-04-09)
-- chore(release): 1.1.14 [skip ci] (8645295, 2025-04-09)
-- chore(release): 1.1.3 [skip ci] (dbfe319, 2025-04-09)
-- chore(release): 1.1.13 [skip ci] (74a3cc0, 2025-04-09)
-- chore(release): 1.1.12 [skip ci] (3ff1f06, 2025-04-09)
-- chore(release): 1.1.11 [skip ci] (cec7a37, 2025-04-09)
-- chore(release): 1.1.10 [skip ci] (443d0f3, 2025-04-09)
-- chore(release): 1.1.9 [skip ci] (a30696b, 2025-04-09)
-- chore(release): 1.1.8 [skip ci] (1a1c171, 2025-04-09)
-- chore: changelog (c22f1a7, 2025-04-09)
-- chore: changelog (4deb5d3, 2025-04-09)
-- chore(release): 1.1.7 [skip ci] (5a6ca56, 2025-04-09)
-- chore: changelog versioning (a72ad65, 2025-04-09)
-- chore(release): 1.1.6 [skip ci] (8f48c13, 2025-04-09)
-- chore: changes (52085d6, 2025-04-09)
-- chore(release): 1.1.5 [skip ci] (88a12b9, 2025-04-09)
-- chore: changes changelog (71f6e47, 2025-04-09)
-- chore(release): 1.1.4 [skip ci] (ecdb26d, 2025-04-09)
-- chore: changelog (fc34108, 2025-04-09)
-- chore(release): 1.1.3 [skip ci] (85c015b, 2025-04-09)
-- chore(release): 1.1.2 [skip ci] (48605d8, 2025-04-09)
-- chore(release): 1.1.1 [skip ci] (f5723e1, 2025-04-09)
-- chore(release): 1.1.0 [skip ci] (625f3ab, 2025-04-09)
-- chore(release): 1.0.9 [skip ci] (19a8a4e, 2025-04-09)
-- chore(release): 1.0.8 [skip ci] (bc547bc, 2025-04-09)
-- chore(release): 1.0.7 [skip ci] (c54a350, 2025-04-09)
-- chore: changes (2ccdafa, 2025-04-09)
-- chore(release): 1.0.6 [skip ci] (1a10752, 2025-04-08)
-- chore(release): 1.0.5 [skip ci] (764b11d, 2025-04-08)
-- chore(release): 1.0.4 [skip ci] (0404225, 2025-04-08)
-- chore(release): 1.0.3 [skip ci] (50eabba, 2025-04-08)
-- chore(release): 1.0.2 [skip ci] (480b88c, 2025-04-08)
-- chore(release): 1.0.1 [skip ci] (7b8b7a6, 2025-04-08)
-- chore(release): 1.0.0 [skip ci] (9a499c4, 2025-04-08)
-- chore(release): 1.1.0 [skip ci] (73627e4, 2025-04-08)
-- chore(release): 1.0.7 [skip ci] (7f65193, 2025-04-03)
-- chore(release): 1.0.6 [skip ci] (1f893a6, 2025-03-31)
-- chore: changes (5656b7d, 2025-03-31)
-- chore(release): 1.0.5 [skip ci] (590dd95, 2025-03-31)
-- chore(release): 1.0.4 [skip ci] (fb302d5, 2025-03-31)
-- chore: changes in sementic-release (4e6405f, 2025-03-31)
-- chore(release): 1.0.3 [skip ci] (e4c5da9, 2025-03-28)
-- chore(release): 1.0.2 [skip ci] (354ed59, 2025-03-28)
-- chore(release): 1.0.1 [skip ci] (adb4567, 2025-03-28)
-- chore(release): 1.0.0 [skip ci] (2ddb16b, 2025-03-28)
-- chore(release): 1.0.0 [skip ci] (6179c44, 2025-03-28)
-- chore(release): 1.0.0 [skip ci] (f9a076b, 2025-03-28)
-
-**Ci**
-
-- ci: merging all changelog all (b5a3bc6, 2025-04-10)
-- ci: merging all changelog (fe9937c, 2025-04-10)
-- ci: changes (097dde8, 2025-04-03)
-- ci: changes (c758be1, 2025-03-28)
-
-**Feat**
-
-- feat: branches (d3678ff, 2025-04-09)
-- feat: changes that target (8f0f98b, 2025-04-08)
-
-**Fix**
-
-- fix: other branch version (bba268c, 2025-04-11)
-- fix: to merge all the changelog (17a1ad8, 2025-04-11)
-- fix: changelog3 (ed6d095, 2025-04-10)
-- fix: changelog2 (dd4d47a, 2025-04-10)
-- fix: changelog1 (ee9b016, 2025-04-10)
-- fix: make changelog (4e581b7, 2025-04-10)
-- fix: to teke changelogs (8960642, 2025-04-10)
-- fix: removed changes (593d313, 2025-04-10)
-- fix: to bring changes (3e0cb30, 2025-04-10)
-- fix: filename (335ab76, 2025-04-10)
-- fix: adding git tags (13d6a38, 2025-04-09)
-- fix: changes (dbd860b, 2025-04-09)
-- fix: hbkjbbhjhbjk (bfe790f, 2025-04-09)
-- fix: jinbkjujkjhjh (c1582fd, 2025-04-09)
-- fix: VHBIUGBIKWBUI (640fa6e, 2025-04-09)
-- fix: suffix (af423ae, 2025-04-09)
-- fix: removved (ab6f675, 2025-04-09)
-- fix: changes (e83354f, 2025-04-09)
-- fix: versioning (87f657c, 2025-04-09)
-- fix: to get branch name (a9784b2, 2025-04-09)
-- fix: branch name (09b7ff0, 2025-04-09)
-- fix: branch name (021b538, 2025-04-09)
-- fix: with branch name (2264fb4, 2025-04-09)
-- fix: changes (4abafad, 2025-04-08)
-- fix: sementic-release (57782d8, 2025-04-08)
-- fix: refactors (c16f06b, 2025-04-08)
-- fix: changes (e1fc021, 2025-04-08)
-- fix: fixing changes (17d9f01, 2025-03-28)
-- fix: branch changes (4ba08c8, 2025-03-28)
-- fix: version (0ea0858, 2025-03-28)
-
-**Other**
-
-- Update docker-compose.yaml (056967b, 2025-03-31)
-- Merge: Merger branch uat to prod (b6d3c4f, 2025-03-31)
-- Update app.js (f3c0031, 2025-03-31)
-- Update docker-compose.yaml (0411a70, 2025-03-31)
-- Merge pull request #1 from swetagupta311/uat (3938481, 2025-03-31)
-- Update docker-compose.yaml (abf0d51, 2025-03-31)
-- Update app.js (66e329d, 2025-03-28)
-- volume added in docker image (0a0447b, 2025-03-28)
-- Merge UAT into master while keeping .github/specific-file.yml unchanged (dba4df7, 2025-03-28)
-- Merge UAT into master while keeping .github/specific-file.yml unchanged (27e0fb5, 2025-03-28)
-- Update docker-compose.yaml (fffab7c, 2025-03-28)
-- Merge UAT into prod while keeping .github files unchanged (bbe303c, 2025-03-28)
-- Delete CHANGELOG.md (abc2e85, 2025-03-28)
-- changes (c7742a1, 2025-03-28)
-- Update docker-compose.yaml (a3465f2, 2025-03-28)
-- testing changes (cae454e, 2025-03-28)
-- first commit (02cd88f, 2025-03-28)
-- first commit (335d587, 2025-03-28)
-
-**Refacor**
-
-- refacor:  target (f095a26, 2025-04-08)
-
-**Refactor**
-
-- refactor: changes (8f0d6ca, 2025-04-09)
-- refactor: change (d31405d, 2025-04-09)
-- refactor: branches (969f5b7, 2025-04-09)
-- refactor: changes (c970755, 2025-04-09)
-- refactor: version defined with branch name (d1c3a47, 2025-04-08)
-- refactor: bkj,rkwshb (c226b4b, 2025-04-08)
-- refactor: last (7252a34, 2025-04-08)
-- refactor: fgdfhxcvhjbkhvbc (f5f291d, 2025-04-08)
-- refactor: hgwiukbb vwkjb (2468bcf, 2025-04-08)
-- refactor: fixing ptuhbbu (7d8be3f, 2025-04-08)
-- refactor: sr changes (79d0de7, 2025-04-08)
-- refactor: changes (ac1ee0e, 2025-04-08)
-- refactor: to get version increment when merged (a7ffffe, 2025-03-31)
-- refactor: to get version increment when merged (2275b8b, 2025-03-31)
-
-**Test**
-
-- test: cheanges (315be2c, 2025-04-11)
-- test: yuffuytydvgjk (936e639, 2025-04-11)
-- test: changelog better (494d2ba, 2025-04-11)
-
-## 1.0.0 (2025-04-09)
+## 1.0.0
 
 ### UAT
 
-**Build**
 
-- build: testing changes (d561515, 2025-03-28)
-- build: testing changes (1f6dfd1, 2025-03-28)
 
-**Chore**
+### Features
 
-- chore(release): 1.0.4 [skip ci] (c2f5b52, 2025-04-11)
-- chore: changes only for uat (a7881ad, 2025-04-11)
-- chore(release): 1.0.3 [skip ci] (dd146d2, 2025-04-11)
-- chore(release): 1.0.2 [skip ci] (dc7c9d3, 2025-04-10)
-- chore(release): 1.0.2-uat.2 [skip ci] (126a7a7, 2025-04-10)
-- chore(release): 1.0.2-uat.1 [skip ci] (c00d2bc, 2025-04-10)
-- chore(release): 1.0.1 [skip ci] (37ddce6, 2025-04-10)
-- chore(release): 1.0.0 [skip ci] (7f565de, 2025-04-09)
-- chore(release): 1.0.0 [skip ci] (ce81ad4, 2025-04-09)
-- chore(release): 1.0.0 [skip ci] (fc7e23b, 2025-04-09)
-- chore(release): 1.1.11 [skip ci] (d0ed341, 2025-04-07)
-- chore(release): 1.1.10 [skip ci] (8aa0566, 2025-04-04)
-- chore(release): 1.1.9 [skip ci] (5d350eb, 2025-04-04)
-- chore(release): 1.1.8 [skip ci] (0f07ca8, 2025-04-04)
-- chore: sv changes (eb3f526, 2025-04-04)
-- chore(release): 1.1.7 [skip ci] (3b79d70, 2025-04-04)
-- chore: sv changes (d7a3d2c, 2025-04-04)
-- chore(release): 1.1.6 [skip ci] (6bf9f22, 2025-04-04)
-- chore(release): 1.1.5 [skip ci] (a868e57, 2025-04-04)
-- chore(release): 1.1.4 [skip ci] (8280aff, 2025-04-04)
-- chore(release): 1.1.3 [skip ci] (e723c03, 2025-04-04)
-- chore(release): 1.1.2 [skip ci] (af46326, 2025-04-04)
-- chore(release): 1.1.1 [skip ci] (aefdd83, 2025-04-04)
-- chore(release): 1.1.0 [skip ci] (dbd3e71, 2025-04-04)
-- chore(release): 1.0.1 [skip ci] (5370931, 2025-04-03)
-- chore(release): 1.0.0 [skip ci] (702fac8, 2025-04-03)
-- chore(release): 1.0.0 [skip ci] (2ddb16b, 2025-03-28)
-- chore(release): 1.0.0 [skip ci] (6179c44, 2025-03-28)
+* changes ([b051d48](https://github.com/swetagupta311/test-semetic-versioning/commit/b051d48526a63d7746376ed7fa21e1a1743f5095))
 
-**Chores**
 
-- chores: changes (f52f869, 2025-04-10)
+### Bug Fixes
 
-**Ci**
+* branch ([e8a7bde](https://github.com/swetagupta311/test-semetic-versioning/commit/e8a7bdef3a375ff68e070d6767ec19a5f28d4306))
+* error ([cce28a3](https://github.com/swetagupta311/test-semetic-versioning/commit/cce28a3200a20d59732dbd756b9296bce77fae44))
+* hethbtbkjr ([3fc000f](https://github.com/swetagupta311/test-semetic-versioning/commit/3fc000f876d2ccb1431390b4a6514176207d52db))
+* ihbniurbge ([15806f2](https://github.com/swetagupta311/test-semetic-versioning/commit/15806f27f9bed2f40eefbcfbfadd4207fa1ffffc))
+* sementic-release version change ([b1f9921](https://github.com/swetagupta311/test-semetic-versioning/commit/b1f992120ba0a38f61b20980207b2c951a2cc79e))
+* syntax ([f63f2c2](https://github.com/swetagupta311/test-semetic-versioning/commit/f63f2c2bd71ae55aa865992eea073f11494fef3a))
+* tags problem ([90761df](https://github.com/swetagupta311/test-semetic-versioning/commit/90761df5a1c7657c519e021c32e6779728a3a757))
+* tesing changes ([ca8a148](https://github.com/swetagupta311/test-semetic-versioning/commit/ca8a148ce57db03588588ca5426f3cc0860f7741))
+* Update docker-compose.yaml ([728240f](https://github.com/swetagupta311/test-semetic-versioning/commit/728240f5b3aa441859b3459df6a346d6d589db7c))
+* version ([a1589ed](https://github.com/swetagupta311/test-semetic-versioning/commit/a1589eda5ad3753a2cfc0ed0d1492f6db4d3f858))
+* version change ([db815dd](https://github.com/swetagupta311/test-semetic-versioning/commit/db815ddd155c962a3e4b8d79173c6c125aee63ee))
 
-- ci: combined changelog 7 (8e6e37d, 2025-04-10)
-- ci: combined changelog 5 (83e4716, 2025-04-10)
-- ci: combined changelog 4 (8d26634, 2025-04-10)
-- ci: combined changelog 3nd (3393c35, 2025-04-10)
-- ci: combined changelog 2nd (d31d07f, 2025-04-10)
-- ci: combined changelog 1st (363b45e, 2025-04-10)
-- ci: testing sv (83ccf1a, 2025-04-04)
-- ci: testing sv (cc21c0c, 2025-04-04)
-- ci: installing (3ed8d0c, 2025-04-03)
-- ci: sementic versioning (14c8a88, 2025-04-03)
-- ci: changes (c758be1, 2025-03-28)
 
-**Feat**
+### Reverts
 
-- feat: changes (b051d48, 2025-04-04)
+* sv changes ([63ca97b](https://github.com/swetagupta311/test-semetic-versioning/commit/63ca97b4b988a0490753208ef0eb70264125eb4d))
 
-**Fix**
 
-- fix: changelog for uat to merge in unifiend changelog (688f046, 2025-04-10)
-- fix: changes (9bfc77e, 2025-04-10)
-- fix: ihbniurbge (15806f2, 2025-04-09)
-- fix: hethbtbkjr (3fc000f, 2025-04-09)
-- fix: sementic-release version change (b1f9921, 2025-04-04)
-- fix: tags problem (90761df, 2025-04-04)
-- fix: tesing changes (ca8a148, 2025-04-04)
-- fix: Update docker-compose.yaml (728240f, 2025-04-03)
-- fix: branch (e8a7bde, 2025-04-03)
-- fix: version change (db815dd, 2025-04-03)
-- fix: syntax (f63f2c2, 2025-04-03)
-- fix: error (cce28a3, 2025-04-03)
-- fix: version (a1589ed, 2025-04-03)
+### Build System
 
-**Other**
+* testing changes ([d561515](https://github.com/swetagupta311/test-semetic-versioning/commit/d561515c3230008d318c818b49ac7cb88d06b191))
+* testing changes ([1f6dfd1](https://github.com/swetagupta311/test-semetic-versioning/commit/1f6dfd1578498216d64275a691a65becc5917d51))
 
-- changes (81efeec, 2025-04-03)
-- Update docker-compose.yaml (056967b, 2025-03-31)
-- Update app.js (f3c0031, 2025-03-31)
-- Update docker-compose.yaml (0411a70, 2025-03-31)
-- Update docker-compose.yaml (abf0d51, 2025-03-31)
-- Update app.js (66e329d, 2025-03-28)
-- volume added in docker image (0a0447b, 2025-03-28)
-- Update docker-compose.yaml (fffab7c, 2025-03-28)
-- Delete CHANGELOG.md (abc2e85, 2025-03-28)
-- changes (c7742a1, 2025-03-28)
-- Update docker-compose.yaml (a3465f2, 2025-03-28)
-- first commit (02cd88f, 2025-03-28)
-- first commit (335d587, 2025-03-28)
 
-**Refactor**
+### CI/CD
 
-- refactor: changes (76581a2, 2025-04-09)
-- refactor: changes (d1526a6, 2025-04-04)
+* changes ([c758be1](https://github.com/swetagupta311/test-semetic-versioning/commit/c758be1052ef054b06e39acd73cf66505fc3ad32))
+* installing ([3ed8d0c](https://github.com/swetagupta311/test-semetic-versioning/commit/3ed8d0cd883774b36bfc5c816e11d7b09d7f1e83))
+* sementic versioning ([14c8a88](https://github.com/swetagupta311/test-semetic-versioning/commit/14c8a883fbf1812f46ebf6de8515e1670a6fdb7b))
+* testing sv ([83ccf1a](https://github.com/swetagupta311/test-semetic-versioning/commit/83ccf1aabb6bf1010aade8b2e0615be33548251a))
+* testing sv ([cc21c0c](https://github.com/swetagupta311/test-semetic-versioning/commit/cc21c0c9b8cd6b4cfd714b49b65226254d6bb518))
 
-**Revert**
 
-- revert: sv changes (63ca97b, 2025-04-04)
+### Tests
 
-**Test**
+* tesing changes ([9d9289f](https://github.com/swetagupta311/test-semetic-versioning/commit/9d9289f3f431cc408687aefcfc697d77aa6157b3))
+* testing ([baa8601](https://github.com/swetagupta311/test-semetic-versioning/commit/baa86015d3227c5600353b79b6f7c7185b777046))
+* testing changes ([fdb4f73](https://github.com/swetagupta311/test-semetic-versioning/commit/fdb4f733fa2a7937f9135d0f9dd4876c796ab63b))
 
-- test: changelog merege (2029fb0, 2025-04-11)
-- test: testing changes (fdb4f73, 2025-04-07)
-- test: tesing changes (9d9289f, 2025-04-04)
-- test: testing (baa8601, 2025-04-04)
+
+### Refactors
+
+* changes ([76581a2](https://github.com/swetagupta311/test-semetic-versioning/commit/76581a24c956b87e01143630276ce5b31adb7d1b))
+* changes ([d1526a6](https://github.com/swetagupta311/test-semetic-versioning/commit/d1526a6e47e67e0c46e9740c0591a835af00d439))
+
+
+### Chores
+
+* **release:** 1.0.0 [skip ci] ([ce81ad4](https://github.com/swetagupta311/test-semetic-versioning/commit/ce81ad40284e1ad8b43c85a6a9d65bd8fec12d5f))
+* **release:** 1.0.0 [skip ci] ([fc7e23b](https://github.com/swetagupta311/test-semetic-versioning/commit/fc7e23bd6508bee879877e3cdcea5b05c3fe0e75))
+* **release:** 1.0.0 [skip ci] ([702fac8](https://github.com/swetagupta311/test-semetic-versioning/commit/702fac89bf716950eaf1195d434818861d2b2505))
+* **release:** 1.0.0 [skip ci] ([2ddb16b](https://github.com/swetagupta311/test-semetic-versioning/commit/2ddb16b67e90c6ea437503b26411ee611f8c543a))
+* **release:** 1.0.0 [skip ci] ([6179c44](https://github.com/swetagupta311/test-semetic-versioning/commit/6179c4499dcf5646e00cf7a359c11009c82695bd))
+* **release:** 1.0.1 [skip ci] ([5370931](https://github.com/swetagupta311/test-semetic-versioning/commit/5370931a190a9d38709a41ba2fd944e773a4499b))
+* **release:** 1.1.0 [skip ci] ([dbd3e71](https://github.com/swetagupta311/test-semetic-versioning/commit/dbd3e71b54a07acf3255e81388ca944ce27ee47e))
+* **release:** 1.1.1 [skip ci] ([aefdd83](https://github.com/swetagupta311/test-semetic-versioning/commit/aefdd83f4603902552cedad1732ba33196640ec8))
+* **release:** 1.1.10 [skip ci] ([8aa0566](https://github.com/swetagupta311/test-semetic-versioning/commit/8aa0566127f96787d17315ad714759f1c9d93a7d))
+* **release:** 1.1.11 [skip ci] ([d0ed341](https://github.com/swetagupta311/test-semetic-versioning/commit/d0ed341124ba454248113646e421090ce7699595))
+* **release:** 1.1.2 [skip ci] ([af46326](https://github.com/swetagupta311/test-semetic-versioning/commit/af46326f89b0bfb0d59ad058f2e613fc9653660d))
+* **release:** 1.1.3 [skip ci] ([e723c03](https://github.com/swetagupta311/test-semetic-versioning/commit/e723c03c33097879b69fbb587e7bca82a65e3039))
+* **release:** 1.1.4 [skip ci] ([8280aff](https://github.com/swetagupta311/test-semetic-versioning/commit/8280afffa2075b9fcbb544be97ae8ae16c1bae2d))
+* **release:** 1.1.5 [skip ci] ([a868e57](https://github.com/swetagupta311/test-semetic-versioning/commit/a868e57fe279d4adbf05cfeeebc09948a3171d0b))
+* **release:** 1.1.6 [skip ci] ([6bf9f22](https://github.com/swetagupta311/test-semetic-versioning/commit/6bf9f226c6357d5c0808a93f197e1271c21aadf3))
+* **release:** 1.1.7 [skip ci] ([3b79d70](https://github.com/swetagupta311/test-semetic-versioning/commit/3b79d70c2376ee9a25229c3eae84afcf17ca10e5))
+* **release:** 1.1.8 [skip ci] ([0f07ca8](https://github.com/swetagupta311/test-semetic-versioning/commit/0f07ca8d92499080892bd6018456d37a3fa3825e))
+* **release:** 1.1.9 [skip ci] ([5d350eb](https://github.com/swetagupta311/test-semetic-versioning/commit/5d350eb4532d3f9f7c172e112a77a09597bfae96))
+* sv changes ([eb3f526](https://github.com/swetagupta311/test-semetic-versioning/commit/eb3f5267a57370935582f4f88e522ccf25fe365a))
+* sv changes ([d7a3d2c](https://github.com/swetagupta311/test-semetic-versioning/commit/d7a3d2c580bb6938d3d247eb57ee65329e5b5932))
+
+
+
+### Features
+
+* changes ([b051d48](https://github.com/swetagupta311/test-semetic-versioning/commit/b051d48526a63d7746376ed7fa21e1a1743f5095))
+
+
+### Bug Fixes
+
+* branch ([e8a7bde](https://github.com/swetagupta311/test-semetic-versioning/commit/e8a7bdef3a375ff68e070d6767ec19a5f28d4306))
+* error ([cce28a3](https://github.com/swetagupta311/test-semetic-versioning/commit/cce28a3200a20d59732dbd756b9296bce77fae44))
+* hethbtbkjr ([3fc000f](https://github.com/swetagupta311/test-semetic-versioning/commit/3fc000f876d2ccb1431390b4a6514176207d52db))
+* sementic-release version change ([b1f9921](https://github.com/swetagupta311/test-semetic-versioning/commit/b1f992120ba0a38f61b20980207b2c951a2cc79e))
+* syntax ([f63f2c2](https://github.com/swetagupta311/test-semetic-versioning/commit/f63f2c2bd71ae55aa865992eea073f11494fef3a))
+* tags problem ([90761df](https://github.com/swetagupta311/test-semetic-versioning/commit/90761df5a1c7657c519e021c32e6779728a3a757))
+* tesing changes ([ca8a148](https://github.com/swetagupta311/test-semetic-versioning/commit/ca8a148ce57db03588588ca5426f3cc0860f7741))
+* Update docker-compose.yaml ([728240f](https://github.com/swetagupta311/test-semetic-versioning/commit/728240f5b3aa441859b3459df6a346d6d589db7c))
+* version ([a1589ed](https://github.com/swetagupta311/test-semetic-versioning/commit/a1589eda5ad3753a2cfc0ed0d1492f6db4d3f858))
+* version change ([db815dd](https://github.com/swetagupta311/test-semetic-versioning/commit/db815ddd155c962a3e4b8d79173c6c125aee63ee))
+
+
+### Reverts
+
+* sv changes ([63ca97b](https://github.com/swetagupta311/test-semetic-versioning/commit/63ca97b4b988a0490753208ef0eb70264125eb4d))
+
+
+### Build System
+
+* testing changes ([d561515](https://github.com/swetagupta311/test-semetic-versioning/commit/d561515c3230008d318c818b49ac7cb88d06b191))
+* testing changes ([1f6dfd1](https://github.com/swetagupta311/test-semetic-versioning/commit/1f6dfd1578498216d64275a691a65becc5917d51))
+
+
+### CI/CD
+
+* changes ([c758be1](https://github.com/swetagupta311/test-semetic-versioning/commit/c758be1052ef054b06e39acd73cf66505fc3ad32))
+* installing ([3ed8d0c](https://github.com/swetagupta311/test-semetic-versioning/commit/3ed8d0cd883774b36bfc5c816e11d7b09d7f1e83))
+* sementic versioning ([14c8a88](https://github.com/swetagupta311/test-semetic-versioning/commit/14c8a883fbf1812f46ebf6de8515e1670a6fdb7b))
+* testing sv ([83ccf1a](https://github.com/swetagupta311/test-semetic-versioning/commit/83ccf1aabb6bf1010aade8b2e0615be33548251a))
+* testing sv ([cc21c0c](https://github.com/swetagupta311/test-semetic-versioning/commit/cc21c0c9b8cd6b4cfd714b49b65226254d6bb518))
+
+
+### Tests
+
+* tesing changes ([9d9289f](https://github.com/swetagupta311/test-semetic-versioning/commit/9d9289f3f431cc408687aefcfc697d77aa6157b3))
+* testing ([baa8601](https://github.com/swetagupta311/test-semetic-versioning/commit/baa86015d3227c5600353b79b6f7c7185b777046))
+* testing changes ([fdb4f73](https://github.com/swetagupta311/test-semetic-versioning/commit/fdb4f733fa2a7937f9135d0f9dd4876c796ab63b))
+
+
+### Refactors
+
+* changes ([76581a2](https://github.com/swetagupta311/test-semetic-versioning/commit/76581a24c956b87e01143630276ce5b31adb7d1b))
+* changes ([d1526a6](https://github.com/swetagupta311/test-semetic-versioning/commit/d1526a6e47e67e0c46e9740c0591a835af00d439))
+
+
+### Chores
+
+* **release:** 1.0.0 [skip ci] ([fc7e23b](https://github.com/swetagupta311/test-semetic-versioning/commit/fc7e23bd6508bee879877e3cdcea5b05c3fe0e75))
+* **release:** 1.0.0 [skip ci] ([702fac8](https://github.com/swetagupta311/test-semetic-versioning/commit/702fac89bf716950eaf1195d434818861d2b2505))
+* **release:** 1.0.0 [skip ci] ([2ddb16b](https://github.com/swetagupta311/test-semetic-versioning/commit/2ddb16b67e90c6ea437503b26411ee611f8c543a))
+* **release:** 1.0.0 [skip ci] ([6179c44](https://github.com/swetagupta311/test-semetic-versioning/commit/6179c4499dcf5646e00cf7a359c11009c82695bd))
+* **release:** 1.0.1 [skip ci] ([5370931](https://github.com/swetagupta311/test-semetic-versioning/commit/5370931a190a9d38709a41ba2fd944e773a4499b))
+* **release:** 1.1.0 [skip ci] ([dbd3e71](https://github.com/swetagupta311/test-semetic-versioning/commit/dbd3e71b54a07acf3255e81388ca944ce27ee47e))
+* **release:** 1.1.1 [skip ci] ([aefdd83](https://github.com/swetagupta311/test-semetic-versioning/commit/aefdd83f4603902552cedad1732ba33196640ec8))
+* **release:** 1.1.10 [skip ci] ([8aa0566](https://github.com/swetagupta311/test-semetic-versioning/commit/8aa0566127f96787d17315ad714759f1c9d93a7d))
+* **release:** 1.1.11 [skip ci] ([d0ed341](https://github.com/swetagupta311/test-semetic-versioning/commit/d0ed341124ba454248113646e421090ce7699595))
+* **release:** 1.1.2 [skip ci] ([af46326](https://github.com/swetagupta311/test-semetic-versioning/commit/af46326f89b0bfb0d59ad058f2e613fc9653660d))
+* **release:** 1.1.3 [skip ci] ([e723c03](https://github.com/swetagupta311/test-semetic-versioning/commit/e723c03c33097879b69fbb587e7bca82a65e3039))
+* **release:** 1.1.4 [skip ci] ([8280aff](https://github.com/swetagupta311/test-semetic-versioning/commit/8280afffa2075b9fcbb544be97ae8ae16c1bae2d))
+* **release:** 1.1.5 [skip ci] ([a868e57](https://github.com/swetagupta311/test-semetic-versioning/commit/a868e57fe279d4adbf05cfeeebc09948a3171d0b))
+* **release:** 1.1.6 [skip ci] ([6bf9f22](https://github.com/swetagupta311/test-semetic-versioning/commit/6bf9f226c6357d5c0808a93f197e1271c21aadf3))
+* **release:** 1.1.7 [skip ci] ([3b79d70](https://github.com/swetagupta311/test-semetic-versioning/commit/3b79d70c2376ee9a25229c3eae84afcf17ca10e5))
+* **release:** 1.1.8 [skip ci] ([0f07ca8](https://github.com/swetagupta311/test-semetic-versioning/commit/0f07ca8d92499080892bd6018456d37a3fa3825e))
+* **release:** 1.1.9 [skip ci] ([5d350eb](https://github.com/swetagupta311/test-semetic-versioning/commit/5d350eb4532d3f9f7c172e112a77a09597bfae96))
+* sv changes ([eb3f526](https://github.com/swetagupta311/test-semetic-versioning/commit/eb3f5267a57370935582f4f88e522ccf25fe365a))
+* sv changes ([d7a3d2c](https://github.com/swetagupta311/test-semetic-versioning/commit/d7a3d2c580bb6938d3d247eb57ee65329e5b5932))
+
+# Changelog - Production Branch
+
+
+
+### Features
+
+* changes ([b051d48](https://github.com/swetagupta311/test-semetic-versioning/commit/b051d48526a63d7746376ed7fa21e1a1743f5095))
+
+
+### Bug Fixes
+
+* branch ([e8a7bde](https://github.com/swetagupta311/test-semetic-versioning/commit/e8a7bdef3a375ff68e070d6767ec19a5f28d4306))
+* error ([cce28a3](https://github.com/swetagupta311/test-semetic-versioning/commit/cce28a3200a20d59732dbd756b9296bce77fae44))
+* sementic-release version change ([b1f9921](https://github.com/swetagupta311/test-semetic-versioning/commit/b1f992120ba0a38f61b20980207b2c951a2cc79e))
+* syntax ([f63f2c2](https://github.com/swetagupta311/test-semetic-versioning/commit/f63f2c2bd71ae55aa865992eea073f11494fef3a))
+* tags problem ([90761df](https://github.com/swetagupta311/test-semetic-versioning/commit/90761df5a1c7657c519e021c32e6779728a3a757))
+* tesing changes ([ca8a148](https://github.com/swetagupta311/test-semetic-versioning/commit/ca8a148ce57db03588588ca5426f3cc0860f7741))
+* Update docker-compose.yaml ([728240f](https://github.com/swetagupta311/test-semetic-versioning/commit/728240f5b3aa441859b3459df6a346d6d589db7c))
+* version ([a1589ed](https://github.com/swetagupta311/test-semetic-versioning/commit/a1589eda5ad3753a2cfc0ed0d1492f6db4d3f858))
+* version change ([db815dd](https://github.com/swetagupta311/test-semetic-versioning/commit/db815ddd155c962a3e4b8d79173c6c125aee63ee))
+
+
+### Reverts
+
+* sv changes ([63ca97b](https://github.com/swetagupta311/test-semetic-versioning/commit/63ca97b4b988a0490753208ef0eb70264125eb4d))
+
+
+### Build System
+
+* testing changes ([d561515](https://github.com/swetagupta311/test-semetic-versioning/commit/d561515c3230008d318c818b49ac7cb88d06b191))
+* testing changes ([1f6dfd1](https://github.com/swetagupta311/test-semetic-versioning/commit/1f6dfd1578498216d64275a691a65becc5917d51))
+
+
+### CI/CD
+
+* changes ([c758be1](https://github.com/swetagupta311/test-semetic-versioning/commit/c758be1052ef054b06e39acd73cf66505fc3ad32))
+* installing ([3ed8d0c](https://github.com/swetagupta311/test-semetic-versioning/commit/3ed8d0cd883774b36bfc5c816e11d7b09d7f1e83))
+* sementic versioning ([14c8a88](https://github.com/swetagupta311/test-semetic-versioning/commit/14c8a883fbf1812f46ebf6de8515e1670a6fdb7b))
+* testing sv ([83ccf1a](https://github.com/swetagupta311/test-semetic-versioning/commit/83ccf1aabb6bf1010aade8b2e0615be33548251a))
+* testing sv ([cc21c0c](https://github.com/swetagupta311/test-semetic-versioning/commit/cc21c0c9b8cd6b4cfd714b49b65226254d6bb518))
+
+
+### Tests
+
+* tesing changes ([9d9289f](https://github.com/swetagupta311/test-semetic-versioning/commit/9d9289f3f431cc408687aefcfc697d77aa6157b3))
+* testing ([baa8601](https://github.com/swetagupta311/test-semetic-versioning/commit/baa86015d3227c5600353b79b6f7c7185b777046))
+* testing changes ([fdb4f73](https://github.com/swetagupta311/test-semetic-versioning/commit/fdb4f733fa2a7937f9135d0f9dd4876c796ab63b))
+
+
+### Chores
+
+* **release:** 1.0.0 [skip ci] ([702fac8](https://github.com/swetagupta311/test-semetic-versioning/commit/702fac89bf716950eaf1195d434818861d2b2505))
+* **release:** 1.0.0 [skip ci] ([2ddb16b](https://github.com/swetagupta311/test-semetic-versioning/commit/2ddb16b67e90c6ea437503b26411ee611f8c543a))
+* **release:** 1.0.0 [skip ci] ([6179c44](https://github.com/swetagupta311/test-semetic-versioning/commit/6179c4499dcf5646e00cf7a359c11009c82695bd))
+* **release:** 1.0.1 [skip ci] ([5370931](https://github.com/swetagupta311/test-semetic-versioning/commit/5370931a190a9d38709a41ba2fd944e773a4499b))
+* **release:** 1.1.0 [skip ci] ([dbd3e71](https://github.com/swetagupta311/test-semetic-versioning/commit/dbd3e71b54a07acf3255e81388ca944ce27ee47e))
+* **release:** 1.1.1 [skip ci] ([aefdd83](https://github.com/swetagupta311/test-semetic-versioning/commit/aefdd83f4603902552cedad1732ba33196640ec8))
+* **release:** 1.1.10 [skip ci] ([8aa0566](https://github.com/swetagupta311/test-semetic-versioning/commit/8aa0566127f96787d17315ad714759f1c9d93a7d))
+* **release:** 1.1.11 [skip ci] ([d0ed341](https://github.com/swetagupta311/test-semetic-versioning/commit/d0ed341124ba454248113646e421090ce7699595))
+* **release:** 1.1.2 [skip ci] ([af46326](https://github.com/swetagupta311/test-semetic-versioning/commit/af46326f89b0bfb0d59ad058f2e613fc9653660d))
+* **release:** 1.1.3 [skip ci] ([e723c03](https://github.com/swetagupta311/test-semetic-versioning/commit/e723c03c33097879b69fbb587e7bca82a65e3039))
+* **release:** 1.1.4 [skip ci] ([8280aff](https://github.com/swetagupta311/test-semetic-versioning/commit/8280afffa2075b9fcbb544be97ae8ae16c1bae2d))
+* **release:** 1.1.5 [skip ci] ([a868e57](https://github.com/swetagupta311/test-semetic-versioning/commit/a868e57fe279d4adbf05cfeeebc09948a3171d0b))
+* **release:** 1.1.6 [skip ci] ([6bf9f22](https://github.com/swetagupta311/test-semetic-versioning/commit/6bf9f226c6357d5c0808a93f197e1271c21aadf3))
+* **release:** 1.1.7 [skip ci] ([3b79d70](https://github.com/swetagupta311/test-semetic-versioning/commit/3b79d70c2376ee9a25229c3eae84afcf17ca10e5))
+* **release:** 1.1.8 [skip ci] ([0f07ca8](https://github.com/swetagupta311/test-semetic-versioning/commit/0f07ca8d92499080892bd6018456d37a3fa3825e))
+* **release:** 1.1.9 [skip ci] ([5d350eb](https://github.com/swetagupta311/test-semetic-versioning/commit/5d350eb4532d3f9f7c172e112a77a09597bfae96))
+* sv changes ([eb3f526](https://github.com/swetagupta311/test-semetic-versioning/commit/eb3f5267a57370935582f4f88e522ccf25fe365a))
+* sv changes ([d7a3d2c](https://github.com/swetagupta311/test-semetic-versioning/commit/d7a3d2c580bb6938d3d247eb57ee65329e5b5932))
+
+
+### Refactors
+
+* changes ([76581a2](https://github.com/swetagupta311/test-semetic-versioning/commit/76581a24c956b87e01143630276ce5b31adb7d1b))
+* changes ([d1526a6](https://github.com/swetagupta311/test-semetic-versioning/commit/d1526a6e47e67e0c46e9740c0591a835af00d439))
+
+### [1.1.11](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.10...v1.1.11) (2025-04-07)
+
+
+### Tests
+
+* testing changes ([fdb4f73](https://github.com/swetagupta311/test-semetic-versioning/commit/fdb4f733fa2a7937f9135d0f9dd4876c796ab63b))
+
+
+### PROD
+
+
+* fix: branch changes ([4ba08c8](https://github.com/swetagupta311/test-semetic-versioning/commit/4ba08c8))
+* fix: changes ([e1fc021](https://github.com/swetagupta311/test-semetic-versioning/commit/e1fc021))
+* fix: fixing changes ([17d9f01](https://github.com/swetagupta311/test-semetic-versioning/commit/17d9f01))
+* fix: version ([0ea0858](https://github.com/swetagupta311/test-semetic-versioning/commit/0ea0858))
+* refacor:  target ([f095a26](https://github.com/swetagupta311/test-semetic-versioning/commit/f095a26))
+* chore: changes ([5656b7d](https://github.com/swetagupta311/test-semetic-versioning/commit/5656b7d))
+* chore: changes in sementic-release ([4e6405f](https://github.com/swetagupta311/test-semetic-versioning/commit/4e6405f))
+* chore(release): 1.0.0 [skip ci] ([2ddb16b](https://github.com/swetagupta311/test-semetic-versioning/commit/2ddb16b))
+* chore(release): 1.0.0 [skip ci] ([6179c44](https://github.com/swetagupta311/test-semetic-versioning/commit/6179c44))
+* chore(release): 1.0.0 [skip ci] ([f9a076b](https://github.com/swetagupta311/test-semetic-versioning/commit/f9a076b))
+* chore(release): 1.0.1 [skip ci] ([adb4567](https://github.com/swetagupta311/test-semetic-versioning/commit/adb4567))
+* chore(release): 1.0.2 [skip ci] ([354ed59](https://github.com/swetagupta311/test-semetic-versioning/commit/354ed59))
+* chore(release): 1.0.3 [skip ci] ([e4c5da9](https://github.com/swetagupta311/test-semetic-versioning/commit/e4c5da9))
+* chore(release): 1.0.4 [skip ci] ([fb302d5](https://github.com/swetagupta311/test-semetic-versioning/commit/fb302d5))
+* chore(release): 1.0.5 [skip ci] ([590dd95](https://github.com/swetagupta311/test-semetic-versioning/commit/590dd95))
+* chore(release): 1.0.6 [skip ci] ([1f893a6](https://github.com/swetagupta311/test-semetic-versioning/commit/1f893a6))
+* chore(release): 1.0.7 [skip ci] ([7f65193](https://github.com/swetagupta311/test-semetic-versioning/commit/7f65193))
+* chore(release): 1.1.0 [skip ci] ([73627e4](https://github.com/swetagupta311/test-semetic-versioning/commit/73627e4))
+* feat: changes that target ([8f0f98b](https://github.com/swetagupta311/test-semetic-versioning/commit/8f0f98b))
+* ci: changes ([097dde8](https://github.com/swetagupta311/test-semetic-versioning/commit/097dde8))
+* ci: changes ([c758be1](https://github.com/swetagupta311/test-semetic-versioning/commit/c758be1))
+* changes ([c7742a1](https://github.com/swetagupta311/test-semetic-versioning/commit/c7742a1))
+* Delete CHANGELOG.md ([abc2e85](https://github.com/swetagupta311/test-semetic-versioning/commit/abc2e85))
+* first commit ([02cd88f](https://github.com/swetagupta311/test-semetic-versioning/commit/02cd88f))
+* first commit ([335d587](https://github.com/swetagupta311/test-semetic-versioning/commit/335d587))
+* Merge pull request #1 from swetagupta311/uat ([3938481](https://github.com/swetagupta311/test-semetic-versioning/commit/3938481)), closes [#1](https://github.com/swetagupta311/test-semetic-versioning/issues/1)
+* Merge UAT into master while keeping .github/specific-file.yml unchanged ([dba4df7](https://github.com/swetagupta311/test-semetic-versioning/commit/dba4df7))
+* Merge UAT into master while keeping .github/specific-file.yml unchanged ([27e0fb5](https://github.com/swetagupta311/test-semetic-versioning/commit/27e0fb5))
+* Merge UAT into prod while keeping .github files unchanged ([bbe303c](https://github.com/swetagupta311/test-semetic-versioning/commit/bbe303c))
+* testing changes ([cae454e](https://github.com/swetagupta311/test-semetic-versioning/commit/cae454e))
+* Update app.js ([f3c0031](https://github.com/swetagupta311/test-semetic-versioning/commit/f3c0031))
+* Update app.js ([66e329d](https://github.com/swetagupta311/test-semetic-versioning/commit/66e329d))
+* Update docker-compose.yaml ([056967b](https://github.com/swetagupta311/test-semetic-versioning/commit/056967b))
+* Update docker-compose.yaml ([0411a70](https://github.com/swetagupta311/test-semetic-versioning/commit/0411a70))
+* Update docker-compose.yaml ([abf0d51](https://github.com/swetagupta311/test-semetic-versioning/commit/abf0d51))
+* Update docker-compose.yaml ([fffab7c](https://github.com/swetagupta311/test-semetic-versioning/commit/fffab7c))
+* Update docker-compose.yaml ([a3465f2](https://github.com/swetagupta311/test-semetic-versioning/commit/a3465f2))
+* volume added in docker image ([0a0447b](https://github.com/swetagupta311/test-semetic-versioning/commit/0a0447b))
+* Merge: Merger branch uat to prod ([b6d3c4f](https://github.com/swetagupta311/test-semetic-versioning/commit/b6d3c4f))
+* refactor: to get version increment when merged ([a7ffffe](https://github.com/swetagupta311/test-semetic-versioning/commit/a7ffffe))
+* refactor: to get version increment when merged ([2275b8b](https://github.com/swetagupta311/test-semetic-versioning/commit/2275b8b))
+* build: Merge UAT into master while keeping .github/specific-file.yml unchanged ([af13b4f](https://github.com/swetagupta311/test-semetic-versioning/commit/af13b4f))
+* build: testing changes ([d561515](https://github.com/swetagupta311/test-semetic-versioning/commit/d561515))
+* build: testing changes ([1f6dfd1](https://github.com/swetagupta311/test-semetic-versioning/commit/1f6dfd1))
+
+## [1.1.0](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.7...v1.1.0) (2025-04-08)
+
+
+### Features
+
+* changes that target ([8f0f98b](https://github.com/swetagupta311/test-semetic-versioning/commit/8f0f98ba0bc38598e30feede5a8c0d76b0dfd064))
+
+### [1.0.7](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.6...v1.0.7) (2025-04-03)
+
+
+### CI/CD
+
+* changes ([097dde8](https://github.com/swetagupta311/test-semetic-versioning/commit/097dde85e03d9ece2aca0e18e42f20d7bc595894))
+
+### [1.0.6](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.5...v1.0.6) (2025-03-31)
+
+
+### Chores
+
+* changes ([5656b7d](https://github.com/swetagupta311/test-semetic-versioning/commit/5656b7db035ac87f670850e1b5df5a61830fad1e))
+
+### [1.0.5](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.4...v1.0.5) (2025-03-31)
+
+### [1.0.4](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.3...v1.0.4) (2025-03-31)
+
+
+### Refactors
+
+* to get version increment when merged ([a7ffffe](https://github.com/swetagupta311/test-semetic-versioning/commit/a7ffffef2bac27b6d4d16f3f8dda644444ac54f7))
+* to get version increment when merged ([2275b8b](https://github.com/swetagupta311/test-semetic-versioning/commit/2275b8bdd6f10aa085914b354199fb0891d5c879))
+
+
+### Chores
+
+* changes in sementic-release ([4e6405f](https://github.com/swetagupta311/test-semetic-versioning/commit/4e6405f7bb79d3976bc4587d5f5a5000bb9bd44e))
+
+### [1.0.3](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.2...v1.0.3) (2025-03-28)
+
+
+### Bug Fixes
+
+* fixing changes ([17d9f01](https://github.com/swetagupta311/test-semetic-versioning/commit/17d9f01722f7f6c6088b507e5a667fd2dca3f45f))
+
+
+### Build System
+
+* Merge UAT into master while keeping .github/specific-file.yml unchanged ([af13b4f](https://github.com/swetagupta311/test-semetic-versioning/commit/af13b4f07da4cc5f81535c4ac244e95fc8139b72))
+
+### [1.0.2](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.1...v1.0.2) (2025-03-28)
+
+
+### Chores
+
+* **release:** 1.0.0 [skip ci] ([2ddb16b](https://github.com/swetagupta311/test-semetic-versioning/commit/2ddb16b67e90c6ea437503b26411ee611f8c543a))
+* **release:** 1.0.0 [skip ci] ([6179c44](https://github.com/swetagupta311/test-semetic-versioning/commit/6179c4499dcf5646e00cf7a359c11009c82695bd))
+
+### [1.0.1](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.0...v1.0.1) (2025-03-28)
+
+
+### Bug Fixes
+
+* branch changes ([4ba08c8](https://github.com/swetagupta311/test-semetic-versioning/commit/4ba08c8729f4725e0e7cd416a5693f185a02753d))
+* version ([0ea0858](https://github.com/swetagupta311/test-semetic-versioning/commit/0ea0858468ef38a21b340e603dce92701a333740))
+
+
+### Build System
+
+* testing changes ([d561515](https://github.com/swetagupta311/test-semetic-versioning/commit/d561515c3230008d318c818b49ac7cb88d06b191))
+* testing changes ([1f6dfd1](https://github.com/swetagupta311/test-semetic-versioning/commit/1f6dfd1578498216d64275a691a65becc5917d51))
+
+
+
+### CI/CD
+
+* changes ([c758be1](https://github.com/swetagupta311/test-semetic-versioning/commit/c758be1052ef054b06e39acd73cf66505fc3ad32))
+
 
