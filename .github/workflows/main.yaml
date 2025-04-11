@@ -2,7 +2,7 @@ name: Release and Deployment
 
 on:
   push:
-    branches: [uat, prod]  
+    branches: [uat]  
   workflow_dispatch:
 
 jobs:
