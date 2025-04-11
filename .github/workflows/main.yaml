@@ -27,4 +27,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           npx semantic-release --branches uat
+      - name: Trigger Unified Changelog Update on prod
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: token $GH_TOKEN" \
+            https://api.github.com/repos/swetagupta311/test-semetic-versioning /dispatches \
+            -d '{"event_type":"update-unified-changelog", "client_payload": { "source": "uat" }}'          
 
