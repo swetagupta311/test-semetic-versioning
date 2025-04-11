@@ -139,8 +139,12 @@ function generateUnifiedChangelog(commits) {
     fs.writeFileSync(outputFile, changelog, 'utf8');
     console.log(`✅ ${outputFile} generated successfully.`);
 
+    if (fs.existsSync(outputFile)) {
+      fs.unlinkSync(outputFile);
+    }
+    
     checkoutBranch(originalBranch);
-  } catch (err) {
+      } catch (err) {
     console.error('❌ Error generating changelog:', err.message);
   }
 })();
