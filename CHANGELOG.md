@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.0.8](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.7-uat...v1.0.8-uat) (2025-04-11)
+
+
+### CI/CD
+
+* ibivyuivbiub ([209aba1](https://github.com/swetagupta311/test-semetic-versioning/commit/209aba15cd528e5093636aff1f19fd953dbe60f2))
+
 ### [1.0.7](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.6-uat...v1.0.7-uat) (2025-04-11)
 
 
