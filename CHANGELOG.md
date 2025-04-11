@@ -1,5 +1,17 @@
 # Changelog - Production Branch
 
+### [1.1.40](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.39-prod...v1.1.40-prod) (2025-04-11)
+
+
+### Chores
+
+* update unified changelog [skip ci] ([46fe063](https://github.com/swetagupta311/test-semetic-versioning/commit/46fe063cf6413337bd06b87ef2081856c3c7eca1))
+
+
+### CI/CD
+
+* adding workflow ([6ad37bc](https://github.com/swetagupta311/test-semetic-versioning/commit/6ad37bc61044821d0d6096e2ff123b218b13e2a4))
+
 ### [1.1.39](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.38-prod...v1.1.39-prod) (2025-04-11)
 
 
