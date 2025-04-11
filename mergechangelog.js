@@ -3,7 +3,7 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 
 // Configuration
-const branches = ['prod', 'uat', 'socket'];
+const branches = ['prod', 'uat'];
 const outputFile = 'UNIFIED_CHANGELOG.md';
 // How many days of history to include
 const daysToInclude = 30;
@@ -29,7 +29,9 @@ function getVersionedCommitHistory(branchName) {
         // Get tag date and commit hash
         const tagDate = execSync(`git log -1 --format=%ad --date=short ${tag}`, { encoding: 'utf8' }).trim();
         const tagCommit = execSync(`git rev-list -n 1 ${tag}`, { encoding: 'utf8' }).trim();
-        // Extract version from tag (e.g., v1.2.3-prod -> 1.2.3)
+        
+        // Extract version from tag properly for different branch formats
+        // For example: v1.2.3-prod or v1.2.3-uat -> 1.2.3
         const versionMatch = tag.match(/v(\d+\.\d+\.\d+)(-\w+)?/);
         const version = versionMatch ? versionMatch[1] : 'unknown';
         
@@ -37,7 +39,8 @@ function getVersionedCommitHistory(branchName) {
           tag,
           date: tagDate,
           commit: tagCommit,
-          version
+          version,
+          branch: branchName // Store the branch info with the tag
         };
       });
     
@@ -72,23 +75,25 @@ function getVersionedCommitHistory(branchName) {
       };
     });
     
-    // Associate commits with versions based on tags
+    // Associate commits with versions based on tags specific to this branch
+    const branchSpecificTags = tags.filter(tag => tag.branch === branchName);
+    
     const versionedCommits = [];
-    let currentVersion = tags.length > 0 ? tags[0].version : 'latest';
-    let currentVersionDate = tags.length > 0 ? tags[0].date : new Date().toISOString().split('T')[0];
+    let currentVersion = branchSpecificTags.length > 0 ? branchSpecificTags[0].version : 'latest';
+    let currentVersionDate = branchSpecificTags.length > 0 ? branchSpecificTags[0].date : new Date().toISOString().split('T')[0];
     let tagIndex = 0;
     
     for (const commit of commits) {
       // Check if this commit is at or before the next tag
-      while (tagIndex < tags.length - 1) {
+      while (tagIndex < branchSpecificTags.length - 1) {
         // If commit is older than current tag, move to the next tag
         const commitHash = commit.fullHash;
-        const isBeforeTag = execSync(`git merge-base --is-ancestor ${commitHash} ${tags[tagIndex+1].commit}; echo $?`, { encoding: 'utf8' }).trim() === '0';
+        const isBeforeTag = execSync(`git merge-base --is-ancestor ${commitHash} ${branchSpecificTags[tagIndex+1].commit}; echo $?`, { encoding: 'utf8' }).trim() === '0';
         
         if (isBeforeTag) {
           tagIndex++;
-          currentVersion = tags[tagIndex].version;
-          currentVersionDate = tags[tagIndex].date;
+          currentVersion = branchSpecificTags[tagIndex].version;
+          currentVersionDate = branchSpecificTags[tagIndex].date;
         } else {
           break;
         }
@@ -128,6 +133,7 @@ function generateUnifiedChangelog() {
   try {
     console.log('Starting to gather versioned commit history from branches...');
     let allCommits = [];
+    const originalBranch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
     
     for (const branch of branches) {
       const commits = getVersionedCommitHistory(branch);
@@ -149,7 +155,10 @@ function generateUnifiedChangelog() {
       if (!commitsByDate[commit.date]) {
         commitsByDate[commit.date] = [];
       }
-      commitsByDate[commit.date].push(commit);
+      // Avoid duplicates (same commit hash across branches)
+      if (!commitsByDate[commit.date].some(c => c.hash === commit.hash)) {
+        commitsByDate[commit.date].push(commit);
+      }
     }
     
     // Sort dates (newest first)
@@ -226,12 +235,54 @@ function generateUnifiedChangelog() {
       }
     }
     
-    // Write the unified changelog to file
-    fs.writeFileSync(outputFile, unifiedChangelog, 'utf8');
-    console.log(`Unified changelog generated at ${outputFile}`);
+    // Always save the changelog to the prod branch
+    const currentBranch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
+    if (currentBranch !== 'prod') {
+      // Save the changelog content temporarily
+      const tempFile = 'temp_changelog.md';
+      fs.writeFileSync(tempFile, unifiedChangelog, 'utf8');
+      
+      // Switch to prod branch and update the changelog
+      execSync(`git checkout prod`, { stdio: 'pipe' });
+      fs.copyFileSync(tempFile, outputFile);
+      fs.unlinkSync(tempFile);
+      
+      // Commit the changes to prod branch
+      try {
+        execSync(`git add ${outputFile}`, { stdio: 'pipe' });
+        execSync(`git commit -m "Update unified changelog [skip ci]"`, { stdio: 'pipe' });
+        console.log('Committed updated changelog to prod branch');
+      } catch (e) {
+        console.log('No changes to commit or commit failed');
+      }
+      
+      // Return to the original branch
+      execSync(`git checkout ${originalBranch}`, { stdio: 'pipe' });
+    } else {
+      // Already on prod branch, just write the file
+      fs.writeFileSync(outputFile, unifiedChangelog, 'utf8');
+      
+      // Commit the changes
+      try {
+        execSync(`git add ${outputFile}`, { stdio: 'pipe' });
+        execSync(`git commit -m "Update unified changelog [skip ci]"`, { stdio: 'pipe' });
+        console.log('Committed updated changelog to prod branch');
+      } catch (e) {
+        console.log('No changes to commit or commit failed');
+      }
+    }
+    
+    console.log(`Unified changelog generated at ${outputFile} on the prod branch`);
     
   } catch (error) {
     console.error('Error generating unified changelog:', error);
+    // Try to return to original branch on error
+    try {
+      const originalBranch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
+      execSync(`git checkout ${originalBranch}`, { stdio: 'pipe' });
+    } catch (e) {
+      console.error('Failed to return to original branch:', e.message);
+    }
   }
 }
 
