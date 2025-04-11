@@ -9,87 +9,103 @@ const branches = [
 ];
 const outputFile = 'UNIFIED_CHANGELOG.md';
 
-// Function to get all tags with their versions
-function getAllTags() {
-  const tags = execSync('git tag --sort=-creatordate', { encoding: 'utf8' })
-    .trim()
-    .split('\n')
-    .filter(tag => tag.trim() !== '');
-
-  return tags.map(tag => {
-    // Find which branch pattern this tag matches
-    const branchInfo = branches.find(b => b.tagPattern.test(tag));
-    if (!branchInfo) return null;
-
-    const match = tag.match(branchInfo.tagPattern);
-    return {
-      tag,
-      version: match[1],
-      branch: branchInfo.name,
-      commit: execSync(`git rev-list -n 1 ${tag}`, { encoding: 'utf8' }).trim(),
-      date: execSync(`git log -1 --format=%ad --date=short ${tag}`, { encoding: 'utf8' }).trim()
-    };
-  }).filter(Boolean);
+// Ensure we fetch all branches and tags
+function setupRepository() {
+  try {
+    execSync('git fetch --all --tags', { stdio: 'pipe' });
+  } catch (error) {
+    console.error('Error fetching branches:', error.message);
+  }
 }
 
-// Function to get all commits with their version info
-function getAllCommits() {
-  const allTags = getAllTags();
-  console.log(`Found ${allTags.length} version tags`);
+// Get all tags with their versions
+function getAllTags() {
+  try {
+    const tags = execSync('git tag --sort=-creatordate', { encoding: 'utf8' })
+      .trim()
+      .split('\n')
+      .filter(tag => tag.trim() !== '');
 
-  // Get all commits from both branches
-  const allCommits = [];
-  const branchCommits = {};
+    return tags.map(tag => {
+      // Find which branch pattern this tag matches
+      const branchInfo = branches.find(b => b.tagPattern.test(tag));
+      if (!branchInfo) return null;
 
-  for (const branch of branches) {
-    const commits = execSync(`git log ${branch.name} --format="%H|%h|%ad|%s" --date=short`, { encoding: 'utf8' })
+      const match = tag.match(branchInfo.tagPattern);
+      try {
+        return {
+          tag,
+          version: match[1],
+          branch: branchInfo.name,
+          commit: execSync(`git rev-list -n 1 ${tag}`, { encoding: 'utf8' }).trim(),
+          date: execSync(`git log -1 --format=%ad --date=short ${tag}`, { encoding: 'utf8' }).trim()
+        };
+      } catch {
+        return null;
+      }
+    }).filter(Boolean);
+  } catch (error) {
+    console.error('Error getting tags:', error.message);
+    return [];
+  }
+}
+
+// Get all commits from a specific branch
+function getBranchCommits(branchName) {
+  try {
+    return execSync(`git log origin/${branchName} --format="%H|%h|%ad|%s" --date=short`, { encoding: 'utf8' })
       .trim()
       .split('\n')
       .filter(line => line.trim() !== '')
       .map(line => {
         const [hash, shortHash, date, ...messageParts] = line.split('|');
         const message = messageParts.join('|');
-        return { hash, shortHash, date, message, branch: branch.name };
+        return { hash, shortHash, date, message, branch: branchName };
       });
-
-    branchCommits[branch.name] = commits;
-    allCommits.push(...commits);
+  } catch (error) {
+    console.error(`Error getting commits for branch ${branchName}:`, error.message);
+    return [];
   }
-
-  // Sort all commits by date (newest first)
-  allCommits.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  // Assign versions to commits
-  const versionedCommits = allCommits.map(commit => {
-    // Find the most recent tag that is an ancestor of this commit
-    const versionTag = allTags.find(tag => {
-      if (tag.branch !== commit.branch) return false;
-      try {
-        return execSync(`git merge-base --is-ancestor ${tag.commit} ${commit.hash}`, { stdio: 'pipe' }) === '';
-      } catch {
-        return false;
-      }
-    });
-
-    return {
-      ...commit,
-      version: versionTag ? versionTag.version : 'unreleased',
-      versionDate: versionTag ? versionTag.date : ''
-    };
-  });
-
-  return versionedCommits;
 }
 
 // Main function to generate the unified changelog
 function generateUnifiedChangelog() {
   try {
-    const commits = getAllCommits();
-    console.log(`Processing ${commits.length} commits`);
+    setupRepository();
+    const allTags = getAllTags();
+    console.log(`Found ${allTags.length} version tags`);
+
+    // Get all commits from all branches
+    const allCommits = [];
+    branches.forEach(branch => {
+      const commits = getBranchCommits(branch.name);
+      allCommits.push(...commits);
+    });
+
+    // Assign versions to commits
+    const versionedCommits = allCommits.map(commit => {
+      // Find tags that belong to this commit's branch
+      const branchTags = allTags.filter(tag => tag.branch === commit.branch);
+      
+      // Find the most recent tag that is an ancestor of this commit
+      const versionTag = branchTags.find(tag => {
+        try {
+          return execSync(`git merge-base --is-ancestor ${tag.commit} ${commit.hash}`, { stdio: 'pipe' }) === '';
+        } catch {
+          return false;
+        }
+      });
+
+      return {
+        ...commit,
+        version: versionTag ? versionTag.version : 'unreleased',
+        versionDate: versionTag ? versionTag.date : ''
+      };
+    });
 
     // Group commits by version
     const commitsByVersion = {};
-    commits.forEach(commit => {
+    versionedCommits.forEach(commit => {
       if (!commitsByVersion[commit.version]) {
         commitsByVersion[commit.version] = [];
       }
