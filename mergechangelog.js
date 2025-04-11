@@ -19,9 +19,9 @@ function getVersionedCommitHistory(branchName) {
     // Checkout the branch
     execSync(`git checkout ${branchName}`, { stdio: 'pipe' });
     
-    // Get all tags that match the branch pattern, sorted by date (newest first)
+    // Get all tags that match the branch pattern, sorted by date (oldest first to establish timeline)
     const branchPattern = branchName === 'prod' ? '-prod' : '-uat';
-    const tagsCommand = `git tag --sort=-creatordate | grep "${branchPattern}" || echo ""`;
+    const tagsCommand = `git tag --sort=creatordate | grep "${branchPattern}" || echo ""`;
     const tags = execSync(tagsCommand, { encoding: 'utf8' })
       .trim()
       .split('\n')
@@ -55,80 +55,81 @@ function getVersionedCommitHistory(branchName) {
     const output = execSync(gitLogCommand, { encoding: 'utf8' });
     
     // Parse the output
-    const commits = output.trim().split('\n').filter(line => line.trim() !== '').map(line => {
-      const [fullHash, shortHash, date, ...messageParts] = line.split('|');
-      const message = messageParts.join('|'); // In case message contains |
-      
-      // Try to extract commit type from conventional commit format
-      let type = 'Other';
-      const conventionalMatch = message.match(/^([a-z]+)(\([^)]+\))?:\s+(.+)$/);
-      if (conventionalMatch) {
-        type = conventionalMatch[1].charAt(0).toUpperCase() + conventionalMatch[1].slice(1);
-      }
-      
-      return {
-        fullHash: fullHash.trim(),
-        hash: shortHash.trim(),
-        date: date.trim(),
-        message: message.trim(),
-        type: type
-      };
-    });
-    
-    // Associate commits with versions based on tags
-    const versionedCommits = [];
-    if (tags.length > 0) {
-      let currentVersionInfo = {
-        version: tags[0].version,
-        date: tags[0].date,
-        commit: tags[0].commit
-      };
-      let tagIndex = 0;
-      
-      for (const commit of commits) {
-        // Check if we need to update the version
-        while (tagIndex < tags.length - 1) {
-          const nextTagCommit = tags[tagIndex + 1].commit;
-          
-          // Check if commit is before or at the next tag
-          const cmd = `git merge-base --is-ancestor ${commit.fullHash} ${nextTagCommit} && echo "true" || echo "false"`;
-          const isBeforeOrAtTag = execSync(cmd, { encoding: 'utf8' }).trim() === "true";
-          
-          if (isBeforeOrAtTag) {
-            tagIndex++;
-            currentVersionInfo = {
-              version: tags[tagIndex].version,
-              date: tags[tagIndex].date,
-              commit: tags[tagIndex].commit
-            };
-          } else {
-            break;
-          }
+    const commits = output.trim().split('\n')
+      .filter(line => line.trim() !== '')
+      .map(line => {
+        const [fullHash, shortHash, date, ...messageParts] = line.split('|');
+        const message = messageParts.join('|'); // In case message contains |
+        
+        // Try to extract commit type from conventional commit format
+        let type = 'Other';
+        const conventionalMatch = message.match(/^([a-z]+)(\([^)]+\))?:\s+(.+)$/);
+        if (conventionalMatch) {
+          type = conventionalMatch[1].charAt(0).toUpperCase() + conventionalMatch[1].slice(1);
         }
         
-        versionedCommits.push({
-          branch: branchName,
-          hash: commit.hash,
-          date: commit.date,
-          message: commit.message,
-          type: commit.type,
-          version: currentVersionInfo.version,
-          versionDate: currentVersionInfo.date
+        return {
+          fullHash: fullHash.trim(),
+          hash: shortHash.trim(),
+          date: date.trim(),
+          message: message.trim(),
+          type: type
+        };
+      });
+    
+    // Build a version timeline for accurate version assignment
+    const versionTimeline = [];
+    if (tags.length > 0) {
+      // Add each tag as a point in the timeline
+      for (let i = 0; i < tags.length; i++) {
+        versionTimeline.push({
+          commit: tags[i].commit,
+          version: tags[i].version,
+          date: tags[i].date
         });
       }
-    } else {
-      // If no tags found for this branch, mark commits as "unversioned"
-      for (const commit of commits) {
-        versionedCommits.push({
-          branch: branchName,
-          hash: commit.hash,
-          date: commit.date,
-          message: commit.message,
-          type: commit.type,
-          version: 'unversioned',
-          versionDate: ''
-        });
+    }
+    
+    // Get the first commit hash to handle pre-tag history
+    let firstCommitHash = '';
+    try {
+      firstCommitHash = execSync('git rev-list --max-parents=0 HEAD', { encoding: 'utf8' }).trim();
+    } catch (e) {
+      console.warn('Could not find first commit:', e.message);
+    }
+    
+    // Associate commits with versions based on the timeline
+    const versionedCommits = [];
+    for (const commit of commits) {
+      let commitVersion = '0.0.1'; // Default starting version
+      let versionDate = '';
+      
+      // Find the latest version this commit belongs to
+      for (let i = versionTimeline.length - 1; i >= 0; i--) {
+        // Check if this commit is an ancestor of or equal to the timeline point
+        const timelinePoint = versionTimeline[i];
+        
+        // Use rev-list to check if commit is reachable from the tag
+        // This handles branch and merge cases properly
+        const cmd = `git rev-list ${timelinePoint.commit} | grep ${commit.fullHash} || echo ""`;
+        const isAncestor = execSync(cmd, { encoding: 'utf8' }).trim() !== "";
+        
+        if (isAncestor) {
+          commitVersion = timelinePoint.version;
+          versionDate = timelinePoint.date;
+          break;
+        }
       }
+      
+      versionedCommits.push({
+        branch: branchName,
+        hash: commit.hash,
+        date: commit.date,
+        message: commit.message,
+        type: commit.type,
+        version: commitVersion,
+        versionDate: versionDate
+      });
     }
     
     // Return to original branch
@@ -161,17 +162,24 @@ current_branch=$(git rev-parse --abbrev-ref HEAD)
 # Only run the script if we're on one of the monitored branches
 if [[ "$current_branch" == "uat" || "$current_branch" == "prod" ]]; then
   echo "Updating unified changelog after commit to $current_branch..."
-  node path/to/your/unified-changelog-script.js
+  
+  # Get the full path to this script
+  SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
+  REPO_ROOT=$(git rev-parse --show-toplevel)
+  CHANGELOG_SCRIPT="$REPO_ROOT/scripts/unified-changelog.js"
+  
+  # Run the changelog script
+  node $CHANGELOG_SCRIPT
   
   # If we're on UAT branch, we need to update prod branch too
   if [[ "$current_branch" == "uat" ]]; then
     # Save the changelog temporarily
-    cp UNIFIED_CHANGELOG.md /tmp/UNIFIED_CHANGELOG.md
+    cp $REPO_ROOT/UNIFIED_CHANGELOG.md /tmp/UNIFIED_CHANGELOG.md
     
     # Switch to prod, update and commit
     git checkout prod
-    cp /tmp/UNIFIED_CHANGELOG.md UNIFIED_CHANGELOG.md
-    git add UNIFIED_CHANGELOG.md
+    cp /tmp/UNIFIED_CHANGELOG.md $REPO_ROOT/UNIFIED_CHANGELOG.md
+    git add $REPO_ROOT/UNIFIED_CHANGELOG.md
     git commit -m "Update unified changelog from UAT [skip ci]" || echo "No changes to commit"
     
     # Return to UAT
@@ -188,6 +196,34 @@ fi
   // Create the hook file
   fs.writeFileSync(postCommitHookPath, hookScript, { mode: 0o755 });
   console.log(`Git hook created at ${postCommitHookPath}`);
+  
+  // Also create a post-checkout hook to update changelog when switching branches
+  const postCheckoutHookPath = `${hooksDir}/post-checkout`;
+  const checkoutHookScript = `#!/bin/bash
+previous_head=$1
+new_head=$2
+checkout_type=$3
+
+# Only run on branch checkout, not file checkout (checkout_type = 1)
+if [ "$checkout_type" = "1" ]; then
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+  
+  # Only run the script if we've switched to one of the monitored branches
+  if [[ "$current_branch" == "uat" || "$current_branch" == "prod" ]]; then
+    echo "Updating unified changelog after checkout to $current_branch..."
+    
+    # Get the full path to this script
+    REPO_ROOT=$(git rev-parse --show-toplevel)
+    CHANGELOG_SCRIPT="$REPO_ROOT/scripts/unified-changelog.js"
+    
+    # Run the changelog script
+    node $CHANGELOG_SCRIPT
+  fi
+fi
+`;
+
+  fs.writeFileSync(postCheckoutHookPath, checkoutHookScript, { mode: 0o755 });
+  console.log(`Git hook created at ${postCheckoutHookPath}`);
 }
 
 // Main function
@@ -258,9 +294,6 @@ function generateUnifiedChangelog() {
         
         // Sort versions (newest first by semantic versioning)
         const sortedVersions = Object.keys(commitsByVersion).sort((a, b) => {
-          if (a === 'unversioned') return -1; // Unversioned always at top
-          if (b === 'unversioned') return 1;
-          
           const [aMajor, aMinor, aPatch] = a.split('.').map(Number);
           const [bMajor, bMinor, bPatch] = b.split('.').map(Number);
           
