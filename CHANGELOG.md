@@ -1,5 +1,17 @@
 # Changelog - Production Branch
 
+### [1.1.28](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.27-prod...v1.1.28-prod) (2025-04-11)
+
+
+### Chores
+
+* update unified changelog [skip ci] ([700c4e3](https://github.com/swetagupta311/test-semetic-versioning/commit/700c4e34b56a97363a161c967fd2c1354ae0f92e))
+
+
+### Tests
+
+* changelog better ([494d2ba](https://github.com/swetagupta311/test-semetic-versioning/commit/494d2ba647d1cd22880b45c268ae722381b7c218))
+
 ### [1.1.27](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.26-prod...v1.1.27-prod) (2025-04-11)
 
 
