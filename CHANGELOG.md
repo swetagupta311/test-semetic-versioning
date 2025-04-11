@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.0.9](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.8-uat...v1.0.9-uat) (2025-04-11)
+
+
+### Bug Fixes
+
+* syntax ([f96f15d](https://github.com/swetagupta311/test-semetic-versioning/commit/f96f15dfc046ad6c22cb2f230b20c2171ac3e49b))
+
 ### [1.0.8](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.7-uat...v1.0.8-uat) (2025-04-11)
 
 
