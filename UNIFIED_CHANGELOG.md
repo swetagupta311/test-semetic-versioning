@@ -4,12 +4,32 @@
 
 ### PROD
 
-#### 0.0.1
+#### 1.1.30
+
+**Chore**
+
+- chore(release): 1.1.30 [skip ci] (0db5629)
+- chore: update unified changelog [skip ci] (8084c34)
+
+**Test**
+
+- test: cheanges (315be2c)
+
+#### 1.1.29
 
 **Chore**
 
 - chore(release): 1.1.29 [skip ci] (27c735e)
 - chore: update unified changelog [skip ci] (7f435c6)
+
+**Test**
+
+- test: yuffuytydvgjk (936e639)
+
+#### 1.1.28
+
+**Chore**
+
 - chore(release): 1.1.28 [skip ci] (0452b10)
 - chore: update unified changelog [skip ci] (700c4e3)
 - chore(release): 1.1.27 [skip ci] (c2770de)
@@ -20,12 +40,11 @@
 
 **Test**
 
-- test: yuffuytydvgjk (936e639)
 - test: changelog better (494d2ba)
 
 ### UAT
 
-#### 0.0.1
+#### 1.1.30
 
 **Chore**
 
@@ -39,7 +58,7 @@
 
 ### PROD
 
-#### 0.0.1
+#### 1.1.28
 
 **Chore**
 
@@ -79,7 +98,7 @@
 
 ### UAT
 
-#### 0.0.1
+#### 1.1.30
 
 **Chore**
 
@@ -110,7 +129,7 @@
 
 ### PROD
 
-#### 0.0.1
+#### 1.1.28
 
 **Chore**
 
@@ -172,7 +191,7 @@
 
 ### UAT
 
-#### 0.0.1
+#### 1.1.30
 
 **Chore**
 
@@ -193,7 +212,7 @@
 
 ### PROD
 
-#### 0.0.1
+#### 1.1.28
 
 **Chore**
 
@@ -236,7 +255,7 @@
 
 ### UAT
 
-#### 0.0.1
+#### 1.1.30
 
 **Chore**
 
@@ -250,7 +269,7 @@
 
 ### UAT
 
-#### 0.0.1
+#### 1.1.30
 
 **Chore**
 
@@ -300,7 +319,7 @@
 
 ### PROD
 
-#### 0.0.1
+#### 1.1.28
 
 **Chore**
 
@@ -312,7 +331,7 @@
 
 ### UAT
 
-#### 0.0.1
+#### 1.1.30
 
 **Chore**
 
@@ -341,12 +360,17 @@
 
 ### PROD
 
-#### 0.0.1
+#### 1.1.28
 
 **Chore**
 
 - chore(release): 1.0.6 [skip ci] (1f893a6)
 - chore: changes (5656b7d)
+
+#### 1.0.0
+
+**Chore**
+
 - chore(release): 1.0.5 [skip ci] (590dd95)
 - chore(release): 1.0.4 [skip ci] (fb302d5)
 - chore: changes in sementic-release (4e6405f)
@@ -365,11 +389,22 @@
 - refactor: to get version increment when merged (a7ffffe)
 - refactor: to get version increment when merged (2275b8b)
 
+### UAT
+
+#### 1.0.0
+
+**Other**
+
+- Update docker-compose.yaml (056967b)
+- Update app.js (f3c0031)
+- Update docker-compose.yaml (0411a70)
+- Update docker-compose.yaml (abf0d51)
+
 ## 2025-03-28
 
 ### PROD
 
-#### 0.0.1
+#### 1.0.0
 
 **Build**
 
@@ -408,6 +443,35 @@
 - changes (c7742a1)
 - Update docker-compose.yaml (a3465f2)
 - testing changes (cae454e)
+- first commit (02cd88f)
+- first commit (335d587)
+
+### UAT
+
+#### 1.0.0
+
+**Build**
+
+- build: testing changes (d561515)
+- build: testing changes (1f6dfd1)
+
+**Chore**
+
+- chore(release): 1.0.0 [skip ci] (2ddb16b)
+- chore(release): 1.0.0 [skip ci] (6179c44)
+
+**Ci**
+
+- ci: changes (c758be1)
+
+**Other**
+
+- Update app.js (66e329d)
+- volume added in docker image (0a0447b)
+- Update docker-compose.yaml (fffab7c)
+- Delete CHANGELOG.md (abc2e85)
+- changes (c7742a1)
+- Update docker-compose.yaml (a3465f2)
 - first commit (02cd88f)
 - first commit (335d587)
 
