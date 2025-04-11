@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.0.7](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.6-uat...v1.0.7-uat) (2025-04-11)
+
+
+### CI/CD
+
+* workflow jnjrht ([6eac25b](https://github.com/swetagupta311/test-semetic-versioning/commit/6eac25b9e13c366837f8a3a117a925298ce8b926))
+
 ### [1.0.6](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.5-uat...v1.0.6-uat) (2025-04-11)
 
 
