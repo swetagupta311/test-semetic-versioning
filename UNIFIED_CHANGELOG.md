@@ -4,6 +4,17 @@
 
 ### PROD
 
+#### 1.1.40
+
+**Chore**
+
+- chore(release): 1.1.40 [skip ci] (b6da29e)
+- chore: update unified changelog [skip ci] (46fe063)
+
+**Ci**
+
+- ci: adding workflow (6ad37bc)
+
 #### 1.1.39
 
 **Chore**
@@ -143,11 +154,21 @@
 
 ### UAT
 
+#### 1.0.5
+
+**Chore**
+
+- chore(release): 1.0.5 [skip ci] (6e50ec3)
+- chore: update unified changelog [skip ci] (14e3c4f)
+
+**Test**
+
+- test: changes (3a26807)
+
 #### 1.0.4
 
 **Chore**
 
-- chore: update unified changelog [skip ci] (14e3c4f)
 - chore(release): 1.0.4 [skip ci] (c2f5b52)
 - chore: changes only for uat (a7881ad)
 
