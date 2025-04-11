@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.1.39](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.38-prod...v1.1.39-prod) (2025-04-11)
+
+
+### Bug Fixes
+
+* unfiend changelog ([3405fa1](https://github.com/swetagupta311/test-semetic-versioning/commit/3405fa13de8353305720241ce0a74b21cbb9ee1c))
+
 ### [1.1.38](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.37-prod...v1.1.38-prod) (2025-04-11)
 
 
