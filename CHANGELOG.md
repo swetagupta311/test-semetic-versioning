@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.0.3](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.2-uat...v1.0.3-uat) (2025-04-11)
+
+
+### Tests
+
+* changelog merege ([2029fb0](https://github.com/swetagupta311/test-semetic-versioning/commit/2029fb0dd9dafffc42cdc66cc26647435c45843c))
+
 ### [1.0.2](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.1-uat...v1.0.2-uat) (2025-04-10)
 
 
