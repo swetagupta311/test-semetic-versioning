@@ -19,9 +19,8 @@ function getVersionedCommitHistory(branchName) {
     // Checkout the branch
     execSync(`git checkout ${branchName}`, { stdio: 'pipe' });
     
-    // Get all tags that match the branch pattern, sorted by date (oldest first to establish timeline)
-    const branchPattern = branchName === 'prod' ? '-prod' : '-uat';
-    const tagsCommand = `git tag --sort=creatordate | grep "${branchPattern}" || echo ""`;
+    // Get all tags in the branch, sorted by date (newest first)
+    const tagsCommand = `git tag --sort=-creatordate`;
     const tags = execSync(tagsCommand, { encoding: 'utf8' })
       .trim()
       .split('\n')
@@ -30,9 +29,7 @@ function getVersionedCommitHistory(branchName) {
         // Get tag date and commit hash
         const tagDate = execSync(`git log -1 --format=%ad --date=short ${tag}`, { encoding: 'utf8' }).trim();
         const tagCommit = execSync(`git rev-list -n 1 ${tag}`, { encoding: 'utf8' }).trim();
-        
-        // Extract version from tag properly for branch-specific formats
-        // For example: v1.2.3-prod or v1.2.3-uat -> 1.2.3
+        // Extract version from tag (e.g., v1.2.3-prod -> 1.2.3)
         const versionMatch = tag.match(/v(\d+\.\d+\.\d+)(-\w+)?/);
         const version = versionMatch ? versionMatch[1] : 'unknown';
         
@@ -55,68 +52,44 @@ function getVersionedCommitHistory(branchName) {
     const output = execSync(gitLogCommand, { encoding: 'utf8' });
     
     // Parse the output
-    const commits = output.trim().split('\n')
-      .filter(line => line.trim() !== '')
-      .map(line => {
-        const [fullHash, shortHash, date, ...messageParts] = line.split('|');
-        const message = messageParts.join('|'); // In case message contains |
-        
-        // Try to extract commit type from conventional commit format
-        let type = 'Other';
-        const conventionalMatch = message.match(/^([a-z]+)(\([^)]+\))?:\s+(.+)$/);
-        if (conventionalMatch) {
-          type = conventionalMatch[1].charAt(0).toUpperCase() + conventionalMatch[1].slice(1);
-        }
-        
-        return {
-          fullHash: fullHash.trim(),
-          hash: shortHash.trim(),
-          date: date.trim(),
-          message: message.trim(),
-          type: type
-        };
-      });
-    
-    // Build a version timeline for accurate version assignment
-    const versionTimeline = [];
-    if (tags.length > 0) {
-      // Add each tag as a point in the timeline
-      for (let i = 0; i < tags.length; i++) {
-        versionTimeline.push({
-          commit: tags[i].commit,
-          version: tags[i].version,
-          date: tags[i].date
-        });
-      }
-    }
-    
-    // Get the first commit hash to handle pre-tag history
-    let firstCommitHash = '';
-    try {
-      firstCommitHash = execSync('git rev-list --max-parents=0 HEAD', { encoding: 'utf8' }).trim();
-    } catch (e) {
-      console.warn('Could not find first commit:', e.message);
-    }
-    
-    // Associate commits with versions based on the timeline
-    const versionedCommits = [];
-    for (const commit of commits) {
-      let commitVersion = '0.0.1'; // Default starting version
-      let versionDate = '';
+    const commits = output.trim().split('\n').filter(line => line.trim() !== '').map(line => {
+      const [fullHash, shortHash, date, ...messageParts] = line.split('|');
+      const message = messageParts.join('|'); // In case message contains |
       
-      // Find the latest version this commit belongs to
-      for (let i = versionTimeline.length - 1; i >= 0; i--) {
-        // Check if this commit is an ancestor of or equal to the timeline point
-        const timelinePoint = versionTimeline[i];
+      // Try to extract commit type from conventional commit format
+      let type = 'Other';
+      const conventionalMatch = message.match(/^([a-z]+)(\([^)]+\))?:\s+(.+)$/);
+      if (conventionalMatch) {
+        type = conventionalMatch[1].charAt(0).toUpperCase() + conventionalMatch[1].slice(1);
+      }
+      
+      return {
+        fullHash: fullHash.trim(),
+        hash: shortHash.trim(),
+        date: date.trim(),
+        message: message.trim(),
+        type: type
+      };
+    });
+    
+    // Associate commits with versions based on tags
+    const versionedCommits = [];
+    let currentVersion = tags.length > 0 ? tags[0].version : 'latest';
+    let currentVersionDate = tags.length > 0 ? tags[0].date : new Date().toISOString().split('T')[0];
+    let tagIndex = 0;
+    
+    for (const commit of commits) {
+      // Check if this commit is at or before the next tag
+      while (tagIndex < tags.length - 1) {
+        // If commit is older than current tag, move to the next tag
+        const commitHash = commit.fullHash;
+        const isBeforeTag = execSync(`git merge-base --is-ancestor ${commitHash} ${tags[tagIndex+1].commit}; echo $?`, { encoding: 'utf8' }).trim() === '0';
         
-        // Use rev-list to check if commit is reachable from the tag
-        // This handles branch and merge cases properly
-        const cmd = `git rev-list ${timelinePoint.commit} | grep ${commit.fullHash} || echo ""`;
-        const isAncestor = execSync(cmd, { encoding: 'utf8' }).trim() !== "";
-        
-        if (isAncestor) {
-          commitVersion = timelinePoint.version;
-          versionDate = timelinePoint.date;
+        if (isBeforeTag) {
+          tagIndex++;
+          currentVersion = tags[tagIndex].version;
+          currentVersionDate = tags[tagIndex].date;
+        } else {
           break;
         }
       }
@@ -127,8 +100,8 @@ function getVersionedCommitHistory(branchName) {
         date: commit.date,
         message: commit.message,
         type: commit.type,
-        version: commitVersion,
-        versionDate: versionDate
+        version: currentVersion,
+        versionDate: currentVersionDate
       });
     }
     
@@ -150,88 +123,11 @@ function getVersionedCommitHistory(branchName) {
   }
 }
 
-// Create a Git hook to update the changelog automatically
-function setupGitHooks() {
-  const hooksDir = '.git/hooks';
-  const postCommitHookPath = `${hooksDir}/post-commit`;
-  
-  // Create the post-commit hook script
-  const hookScript = `#!/bin/bash
-current_branch=$(git rev-parse --abbrev-ref HEAD)
-
-# Only run the script if we're on one of the monitored branches
-if [[ "$current_branch" == "uat" || "$current_branch" == "prod" ]]; then
-  echo "Updating unified changelog after commit to $current_branch..."
-  
-  # Get the full path to this script
-  SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
-  REPO_ROOT=$(git rev-parse --show-toplevel)
-  CHANGELOG_SCRIPT="$REPO_ROOT/scripts/unified-changelog.js"
-  
-  # Run the changelog script
-  node $CHANGELOG_SCRIPT
-  
-  # If we're on UAT branch, we need to update prod branch too
-  if [[ "$current_branch" == "uat" ]]; then
-    # Save the changelog temporarily
-    cp $REPO_ROOT/UNIFIED_CHANGELOG.md /tmp/UNIFIED_CHANGELOG.md
-    
-    # Switch to prod, update and commit
-    git checkout prod
-    cp /tmp/UNIFIED_CHANGELOG.md $REPO_ROOT/UNIFIED_CHANGELOG.md
-    git add $REPO_ROOT/UNIFIED_CHANGELOG.md
-    git commit -m "Update unified changelog from UAT [skip ci]" || echo "No changes to commit"
-    
-    # Return to UAT
-    git checkout uat
-  fi
-fi
-`;
-
-  // Ensure hooks directory exists
-  if (!fs.existsSync(hooksDir)) {
-    fs.mkdirSync(hooksDir, { recursive: true });
-  }
-
-  // Create the hook file
-  fs.writeFileSync(postCommitHookPath, hookScript, { mode: 0o755 });
-  console.log(`Git hook created at ${postCommitHookPath}`);
-  
-  // Also create a post-checkout hook to update changelog when switching branches
-  const postCheckoutHookPath = `${hooksDir}/post-checkout`;
-  const checkoutHookScript = `#!/bin/bash
-previous_head=$1
-new_head=$2
-checkout_type=$3
-
-# Only run on branch checkout, not file checkout (checkout_type = 1)
-if [ "$checkout_type" = "1" ]; then
-  current_branch=$(git rev-parse --abbrev-ref HEAD)
-  
-  # Only run the script if we've switched to one of the monitored branches
-  if [[ "$current_branch" == "uat" || "$current_branch" == "prod" ]]; then
-    echo "Updating unified changelog after checkout to $current_branch..."
-    
-    # Get the full path to this script
-    REPO_ROOT=$(git rev-parse --show-toplevel)
-    CHANGELOG_SCRIPT="$REPO_ROOT/scripts/unified-changelog.js"
-    
-    # Run the changelog script
-    node $CHANGELOG_SCRIPT
-  fi
-fi
-`;
-
-  fs.writeFileSync(postCheckoutHookPath, checkoutHookScript, { mode: 0o755 });
-  console.log(`Git hook created at ${postCheckoutHookPath}`);
-}
-
 // Main function
 function generateUnifiedChangelog() {
   try {
     console.log('Starting to gather versioned commit history from branches...');
     let allCommits = [];
-    const originalBranch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
     
     for (const branch of branches) {
       const commits = getVersionedCommitHistory(branch);
@@ -253,10 +149,7 @@ function generateUnifiedChangelog() {
       if (!commitsByDate[commit.date]) {
         commitsByDate[commit.date] = [];
       }
-      // Avoid duplicates (same commit hash across branches)
-      if (!commitsByDate[commit.date].some(c => c.hash === commit.hash)) {
-        commitsByDate[commit.date].push(commit);
-      }
+      commitsByDate[commit.date].push(commit);
     }
     
     // Sort dates (newest first)
@@ -333,84 +226,12 @@ function generateUnifiedChangelog() {
       }
     }
     
-    // Save the changelog to the appropriate location
-    const currentBranch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
-    
-    if (currentBranch === 'prod') {
-      // If on prod branch, directly write the file
-      fs.writeFileSync(outputFile, unifiedChangelog, 'utf8');
-      
-      try {
-        execSync(`git add ${outputFile}`, { stdio: 'pipe' });
-        execSync(`git commit -m "Update unified changelog [skip ci]"`, { stdio: 'pipe' });
-        console.log('Committed updated changelog to prod branch');
-      } catch (e) {
-        console.log('No changes to commit or commit failed');
-      }
-    } else if (currentBranch === 'uat') {
-      // If on UAT branch, save locally and also update on prod
-      fs.writeFileSync(outputFile, unifiedChangelog, 'utf8');
-      
-      // Switch to prod branch, copy the file, commit, and switch back
-      try {
-        // Save the UAT branch position
-        const uatHead = execSync('git rev-parse HEAD', { encoding: 'utf8' }).trim();
-        
-        // Create a temporary copy of the changelog
-        const tempFile = '/tmp/UNIFIED_CHANGELOG.md';
-        fs.copyFileSync(outputFile, tempFile);
-        
-        // Switch to prod branch
-        execSync('git checkout prod', { stdio: 'pipe' });
-        
-        // Copy the file to prod
-        fs.copyFileSync(tempFile, outputFile);
-        
-        // Commit the changes on prod
-        execSync(`git add ${outputFile}`, { stdio: 'pipe' });
-        execSync(`git commit -m "Update unified changelog from UAT [skip ci]"`, { stdio: 'pipe' });
-        console.log('Committed updated changelog to prod branch');
-        
-        // Switch back to UAT branch
-        execSync(`git checkout uat`, { stdio: 'pipe' });
-        
-        // Add changes to UAT as well
-        execSync(`git add ${outputFile}`, { stdio: 'pipe' });
-        try {
-          execSync(`git commit -m "Update unified changelog on UAT [skip ci]"`, { stdio: 'pipe' });
-        } catch (e) {
-          console.log('No changes to commit on UAT or commit failed');
-        }
-      } catch (e) {
-        console.error('Error updating prod branch:', e.message);
-        
-        // Try to get back to the original branch
-        try {
-          execSync(`git checkout ${originalBranch}`, { stdio: 'pipe' });
-        } catch (e2) {
-          console.error('Failed to return to original branch:', e2.message);
-        }
-      }
-    } else {
-      // If on another branch, just create the file without committing
-      fs.writeFileSync(outputFile, unifiedChangelog, 'utf8');
-      console.log(`Unified changelog generated at ${outputFile} (not committed)`);
-    }
-    
-    // Set up git hooks for automatic updates
-    setupGitHooks();
-    
-    console.log(`Unified changelog generation complete`);
+    // Write the unified changelog to file
+    fs.writeFileSync(outputFile, unifiedChangelog, 'utf8');
+    console.log(`Unified changelog generated at ${outputFile}`);
     
   } catch (error) {
     console.error('Error generating unified changelog:', error);
-    // Try to return to original branch on error
-    try {
-      const originalBranch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
-      execSync(`git checkout ${originalBranch}`, { stdio: 'pipe' });
-    } catch (e) {
-      console.error('Failed to return to original branch:', e.message);
-    }
   }
 }
 
