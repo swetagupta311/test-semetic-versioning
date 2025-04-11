@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.1.37](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.36-prod...v1.1.37-prod) (2025-04-11)
+
+
+### Bug Fixes
+
+* iohysewazewx ybu ([f974948](https://github.com/swetagupta311/test-semetic-versioning/commit/f974948fe8c436587c83a3fd6bb0105133378abf))
+
 ### [1.1.36](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.35-prod...v1.1.36-prod) (2025-04-11)
 
 
