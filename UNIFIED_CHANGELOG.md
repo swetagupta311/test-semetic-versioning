@@ -1,121 +1,68 @@
 # Unified Changelog
 
+## 2025-04-11
+
+### PROD
+
+#### 1.1.27
+
+**Chore**
+
+- chore(release): 1.1.27 [skip ci] (c2770de)
+
+**Fix**
+
+- fix: to merge all the changelog (17a1ad8)
+
 ## 2025-04-10
 
 ### PROD
 
-#### 1.1.26
+#### 1.1.27
 
 **Chore**
 
+- chore: update unified changelog [skip ci] (ae828b7)
 - chore(release): 1.1.26 [skip ci] (f5dc2e9)
 - chore: update unified changelog [skip ci] (a5d7fe8)
-
-**Fix**
-
-- fix: changelog3 (ed6d095)
-
-#### 1.1.25
-
-**Chore**
-
 - chore(release): 1.1.25 [skip ci] (49c62e8)
 - chore: update unified changelog [skip ci] (834e62f)
-
-**Fix**
-
-- fix: changelog2 (dd4d47a)
-
-#### 1.1.24
-
-**Chore**
-
 - chore(release): 1.1.24 [skip ci] (09cfe57)
 - chore: update unified changelog [skip ci] (dc03074)
-
-**Fix**
-
-- fix: changelog1 (ee9b016)
-
-#### 1.1.23
-
-**Chore**
-
 - chore(release): 1.1.23 [skip ci] (975daab)
 - chore: update unified changelog [skip ci] (30ece65)
-
-**Fix**
-
-- fix: make changelog (4e581b7)
-
-#### 1.1.22
-
-**Chore**
-
 - chore(release): 1.1.22 [skip ci] (8de048d)
-
-**Fix**
-
-- fix: to teke changelogs (8960642)
-
-#### 1.1.21
-
-**Chore**
-
 - chore(release): 1.1.21 [skip ci] (1972383)
 - chore: update unified changelog [skip ci] (88e54f3)
-
-**Fix**
-
-- fix: removed changes (593d313)
-
-#### 1.1.20
-
-**Chore**
-
 - chore(release): 1.1.20 [skip ci] (d452d21)
 - chore: update unified changelog [skip ci] (c200612)
-
-**Fix**
-
-- fix: to bring changes (3e0cb30)
-
-#### 1.1.19
-
-**Chore**
-
 - chore(release): 1.1.19 [skip ci] (851c9f5)
-
-**Fix**
-
-- fix: filename (335ab76)
-
-#### 1.1.18
-
-**Chore**
-
 - chore(release): 1.1.18 [skip ci] (8288be7)
-
-**Ci**
-
-- ci: merging all changelog all (b5a3bc6)
-
-#### 1.1.17
-
-**Chore**
-
 - chore(release): 1.1.17 [skip ci] (fc901f6)
 
 **Ci**
 
+- ci: merging all changelog all (b5a3bc6)
 - ci: merging all changelog (fe9937c)
+
+**Fix**
+
+- fix: changelog3 (ed6d095)
+- fix: changelog2 (dd4d47a)
+- fix: changelog1 (ee9b016)
+- fix: make changelog (4e581b7)
+- fix: to teke changelogs (8960642)
+- fix: removed changes (593d313)
+- fix: to bring changes (3e0cb30)
+- fix: filename (335ab76)
 
 ### UAT
 
-#### 1.1.26
+#### 1.0.2
 
 **Chore**
 
+- chore(release): 1.0.2 [skip ci] (dc7c9d3)
 - chore(release): 1.0.2-uat.2 [skip ci] (126a7a7)
 - chore(release): 1.0.2-uat.1 [skip ci] (c00d2bc)
 - chore(release): 1.0.1 [skip ci] (37ddce6)
@@ -135,13 +82,14 @@
 
 **Fix**
 
+- fix: changelog for uat to merge in unifiend changelog (688f046)
 - fix: changes (9bfc77e)
 
 ## 2025-04-09
 
 ### PROD
 
-#### 1.1.17
+#### 1.1.27
 
 **Chore**
 
@@ -203,7 +151,7 @@
 
 ### UAT
 
-#### 1.1.26
+#### 1.0.2
 
 **Chore**
 
@@ -224,7 +172,7 @@
 
 ### PROD
 
-#### 1.1.17
+#### 1.1.27
 
 **Chore**
 
@@ -267,7 +215,7 @@
 
 ### UAT
 
-#### 1.1.26
+#### 1.0.2
 
 **Chore**
 
@@ -281,7 +229,7 @@
 
 ### UAT
 
-#### 1.1.26
+#### 1.0.2
 
 **Chore**
 
@@ -331,7 +279,7 @@
 
 ### PROD
 
-#### 1.1.17
+#### 1.1.27
 
 **Chore**
 
@@ -343,7 +291,7 @@
 
 ### UAT
 
-#### 1.1.26
+#### 1.0.2
 
 **Chore**
 
@@ -372,7 +320,7 @@
 
 ### PROD
 
-#### 1.1.17
+#### 1.1.27
 
 **Chore**
 
@@ -400,17 +348,6 @@
 
 - refactor: to get version increment when merged (a7ffffe)
 - refactor: to get version increment when merged (2275b8b)
-
-### UAT
-
-#### 1.0.0
-
-**Other**
-
-- Update docker-compose.yaml (056967b)
-- Update app.js (f3c0031)
-- Update docker-compose.yaml (0411a70)
-- Update docker-compose.yaml (abf0d51)
 
 ## 2025-03-28
 
@@ -455,35 +392,6 @@
 - changes (c7742a1)
 - Update docker-compose.yaml (a3465f2)
 - testing changes (cae454e)
-- first commit (02cd88f)
-- first commit (335d587)
-
-### UAT
-
-#### 1.0.0
-
-**Build**
-
-- build: testing changes (d561515)
-- build: testing changes (1f6dfd1)
-
-**Chore**
-
-- chore(release): 1.0.0 [skip ci] (2ddb16b)
-- chore(release): 1.0.0 [skip ci] (6179c44)
-
-**Ci**
-
-- ci: changes (c758be1)
-
-**Other**
-
-- Update app.js (66e329d)
-- volume added in docker image (0a0447b)
-- Update docker-compose.yaml (fffab7c)
-- Delete CHANGELOG.md (abc2e85)
-- changes (c7742a1)
-- Update docker-compose.yaml (a3465f2)
 - first commit (02cd88f)
 - first commit (335d587)
 
