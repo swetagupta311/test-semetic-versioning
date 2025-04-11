@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.0.6](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.5-uat...v1.0.6-uat) (2025-04-11)
+
+
+### CI/CD
+
+* workflow ([d5c3fa1](https://github.com/swetagupta311/test-semetic-versioning/commit/d5c3fa12689d3d3f849cbab2be6e5fbc6789e28d))
+
 ### [1.0.5](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.4-uat...v1.0.5-uat) (2025-04-11)
 
 
