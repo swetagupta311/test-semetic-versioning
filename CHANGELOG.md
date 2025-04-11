@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.1.38](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.37-prod...v1.1.38-prod) (2025-04-11)
+
+
+### Bug Fixes
+
+* njhjigufi ([f2cc6a8](https://github.com/swetagupta311/test-semetic-versioning/commit/f2cc6a8707695fdfc684d8f6bc2df5158541c83f))
+
 ### [1.1.37](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.1.36-prod...v1.1.37-prod) (2025-04-11)
 
 
