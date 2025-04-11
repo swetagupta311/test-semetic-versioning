@@ -3,142 +3,159 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 
 // Configuration
-const branches = ['prod', 'uat'];
+const branches = [
+  { name: 'prod', tagPattern: /^v(\d+\.\d+\.\d+)-prod$/ },
+  { name: 'uat', tagPattern: /^v(\d+\.\d+\.\d+)-uat$/ }
+];
 const outputFile = 'UNIFIED_CHANGELOG.md';
 
-// Function to get changelog content from a branch
-function getChangelogFromBranch(branch) {
-  try {
-    // Save current branch
-    const currentBranch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
-    
-    // Checkout the branch
-    execSync(`git checkout ${branch}`, { stdio: 'pipe' });
-    
-    // Read the changelog file
-    let content = '';
-    if (fs.existsSync('CHANGELOG.md')) {
-      content = fs.readFileSync('CHANGELOG.md', 'utf8');
-    }
-    
-    // Return to original branch
-    execSync(`git checkout ${currentBranch}`, { stdio: 'pipe' });
-    
+// Function to get all tags with their versions
+function getAllTags() {
+  const tags = execSync('git tag --sort=-creatordate', { encoding: 'utf8' })
+    .trim()
+    .split('\n')
+    .filter(tag => tag.trim() !== '');
+
+  return tags.map(tag => {
+    // Find which branch pattern this tag matches
+    const branchInfo = branches.find(b => b.tagPattern.test(tag));
+    if (!branchInfo) return null;
+
+    const match = tag.match(branchInfo.tagPattern);
     return {
-      branch,
-      content
+      tag,
+      version: match[1],
+      branch: branchInfo.name,
+      commit: execSync(`git rev-list -n 1 ${tag}`, { encoding: 'utf8' }).trim(),
+      date: execSync(`git log -1 --format=%ad --date=short ${tag}`, { encoding: 'utf8' }).trim()
     };
-  } catch (error) {
-    console.error(`Error processing branch ${branch}:`, error.message);
-    return {
-      branch,
-      content: ''
-    };
+  }).filter(Boolean);
+}
+
+// Function to get all commits with their version info
+function getAllCommits() {
+  const allTags = getAllTags();
+  console.log(`Found ${allTags.length} version tags`);
+
+  // Get all commits from both branches
+  const allCommits = [];
+  const branchCommits = {};
+
+  for (const branch of branches) {
+    const commits = execSync(`git log ${branch.name} --format="%H|%h|%ad|%s" --date=short`, { encoding: 'utf8' })
+      .trim()
+      .split('\n')
+      .filter(line => line.trim() !== '')
+      .map(line => {
+        const [hash, shortHash, date, ...messageParts] = line.split('|');
+        const message = messageParts.join('|');
+        return { hash, shortHash, date, message, branch: branch.name };
+      });
+
+    branchCommits[branch.name] = commits;
+    allCommits.push(...commits);
   }
-}
 
-// Function to parse changelog content
-function parseChangelog(content) {
-  const versions = [];
-  let currentVersion = null;
-  
-  content.split('\n').forEach(line => {
-    // Match version headers like "## 1.0.0 (2023-01-01)"
-    const versionMatch = line.match(/^## (\d+\.\d+\.\d+)(?: \((.*?)\))?/);
-    if (versionMatch) {
-      currentVersion = {
-        version: versionMatch[1],
-        date: versionMatch[2] || '',
-        content: [line]
-      };
-      versions.push(currentVersion);
-      return;
-    }
-    
-    // Match sub-headers like "### Features"
-    const sectionMatch = line.match(/^### (.*)/);
-    if (sectionMatch && currentVersion) {
-      currentVersion.content.push(line);
-      return;
-    }
-    
-    if (currentVersion) {
-      currentVersion.content.push(line);
-    }
+  // Sort all commits by date (newest first)
+  allCommits.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  // Assign versions to commits
+  const versionedCommits = allCommits.map(commit => {
+    // Find the most recent tag that is an ancestor of this commit
+    const versionTag = allTags.find(tag => {
+      if (tag.branch !== commit.branch) return false;
+      try {
+        return execSync(`git merge-base --is-ancestor ${tag.commit} ${commit.hash}`, { stdio: 'pipe' }) === '';
+      } catch {
+        return false;
+      }
+    });
+
+    return {
+      ...commit,
+      version: versionTag ? versionTag.version : 'unreleased',
+      versionDate: versionTag ? versionTag.date : ''
+    };
   });
-  
-  return versions;
+
+  return versionedCommits;
 }
 
-// Main function to generate unified changelog
+// Main function to generate the unified changelog
 function generateUnifiedChangelog() {
   try {
-    // Get changelogs from all branches
-    const branchChangelogs = branches.map(branch => getChangelogFromBranch(branch));
-    
-    // Parse all changelogs
-    const allVersions = [];
-    branchChangelogs.forEach(({ branch, content }) => {
-      const versions = parseChangelog(content);
-      versions.forEach(v => {
-        allVersions.push({
-          ...v,
-          branch
-        });
-      });
-    });
-    
-    // Sort versions by date (newest first)
-    allVersions.sort((a, b) => {
-      if (!a.date && !b.date) return 0;
-      if (!a.date) return 1;
-      if (!b.date) return -1;
-      return new Date(b.date) - new Date(a.date);
-    });
-    
-    // Group versions by version number
-    const versionMap = new Map();
-    allVersions.forEach(version => {
-      if (!versionMap.has(version.version)) {
-        versionMap.set(version.version, []);
+    const commits = getAllCommits();
+    console.log(`Processing ${commits.length} commits`);
+
+    // Group commits by version
+    const commitsByVersion = {};
+    commits.forEach(commit => {
+      if (!commitsByVersion[commit.version]) {
+        commitsByVersion[commit.version] = [];
       }
-      versionMap.get(version.version).push(version);
+      commitsByVersion[commit.version].push(commit);
     });
-    
-    // Generate unified changelog
-    let unifiedChangelog = '# Unified Changelog\n\n';
-    unifiedChangelog += 'This document combines release notes from all branches.\n\n';
-    
-    // Add versions in order
-    Array.from(versionMap.entries()).forEach(([version, entries]) => {
-      unifiedChangelog += `## ${version}\n\n`;
+
+    // Sort versions (newest first)
+    const sortedVersions = Object.keys(commitsByVersion).sort((a, b) => {
+      if (a === 'unreleased') return 1;
+      if (b === 'unreleased') return -1;
       
+      const [aMajor, aMinor, aPatch] = a.split('.').map(Number);
+      const [bMajor, bMinor, bPatch] = b.split('.').map(Number);
+      
+      if (aMajor !== bMajor) return bMajor - aMajor;
+      if (aMinor !== bMinor) return bMinor - aMinor;
+      return bPatch - aPatch;
+    });
+
+    // Generate the changelog content
+    let changelogContent = '# Unified Changelog\n\n';
+    changelogContent += 'Combined release history from all branches\n\n';
+
+    sortedVersions.forEach(version => {
+      const versionCommits = commitsByVersion[version];
+      const versionDate = versionCommits[0].versionDate || 'unreleased';
+
+      changelogContent += `## ${version}${versionDate ? ` (${versionDate})` : ''}\n\n`;
+
       // Group by branch
-      const branchGroups = {};
-      entries.forEach(entry => {
-        if (!branchGroups[entry.branch]) {
-          branchGroups[entry.branch] = [];
+      const commitsByBranch = {};
+      versionCommits.forEach(commit => {
+        if (!commitsByBranch[commit.branch]) {
+          commitsByBranch[commit.branch] = [];
         }
-        branchGroups[entry.branch].push(entry);
+        commitsByBranch[commit.branch].push(commit);
       });
-      
-      // Add each branch's content
-      Object.entries(branchGroups).forEach(([branch, versions]) => {
-        unifiedChangelog += `### ${branch.toUpperCase()}\n\n`;
-        versions.forEach(v => {
-          // Skip the version header line (we already added it)
-          v.content.slice(1).forEach(line => {
-            unifiedChangelog += `${line}\n`;
-          });
+
+      // Add commits for each branch
+      Object.entries(commitsByBranch).forEach(([branch, branchCommits]) => {
+        changelogContent += `### ${branch.toUpperCase()}\n\n`;
+
+        // Group by commit type
+        const commitsByType = {};
+        branchCommits.forEach(commit => {
+          const type = commit.message.match(/^(\w+)(?:\([^)]*\))?:/)?.[1] || 'Other';
+          if (!commitsByType[type]) {
+            commitsByType[type] = [];
+          }
+          commitsByType[type].push(commit);
         });
-        unifiedChangelog += '\n';
+
+        // Add commits by type
+        Object.entries(commitsByType).forEach(([type, typeCommits]) => {
+          changelogContent += `**${type.charAt(0).toUpperCase() + type.slice(1)}**\n\n`;
+          typeCommits.forEach(commit => {
+            changelogContent += `- ${commit.message} (${commit.shortHash}, ${commit.date})\n`;
+          });
+          changelogContent += '\n';
+        });
       });
     });
-    
-    // Write the unified changelog
-    fs.writeFileSync(outputFile, unifiedChangelog, 'utf8');
+
+    fs.writeFileSync(outputFile, changelogContent, 'utf8');
     console.log(`Successfully generated ${outputFile}`);
-    
+
   } catch (error) {
     console.error('Error generating unified changelog:', error);
   }
