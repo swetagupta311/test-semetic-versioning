@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.0.13](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.12-uat...v1.0.13-uat) (2025-04-14)
+
+
+### Bug Fixes
+
+* Rename main.yaml to merge.yaml ([82aaeda](https://github.com/swetagupta311/test-semetic-versioning/commit/82aaeda0399af9f713de76b566de4f06c612d27a))
+
 ### [1.0.12](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.11-uat...v1.0.12-uat) (2025-04-14)
 
 
