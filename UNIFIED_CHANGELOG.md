@@ -1,8 +1,28 @@
 # Unified Changelog
 
+## 2025-04-14
+
+### PROD
+
+#### 1.1.41
+
+**Chore**
+
+- chore(release): 1.1.41 [skip ci] (f410541)
+
+**Fix**
+
+- fix: merge.yaml (ac66ace)
+
 ## 2025-04-11
 
 ### PROD
+
+#### 1.1.41
+
+**Chore**
+
+- chore: update unified changelog [skip ci] (86684f1)
 
 #### 1.1.40
 
@@ -153,6 +173,46 @@
 - fix: to merge all the changelog (17a1ad8)
 
 ### UAT
+
+#### 1.0.9
+
+**Chore**
+
+- chore(release): 1.0.9 [skip ci] (609cd52)
+
+**Fix**
+
+- fix: syntax (f96f15d)
+
+#### 1.0.8
+
+**Chore**
+
+- chore(release): 1.0.8 [skip ci] (aa791af)
+
+**Ci**
+
+- ci: ibivyuivbiub (209aba1)
+
+#### 1.0.7
+
+**Chore**
+
+- chore(release): 1.0.7 [skip ci] (9de4492)
+
+**Ci**
+
+- ci: workflow jnjrht (6eac25b)
+
+#### 1.0.6
+
+**Chore**
+
+- chore(release): 1.0.6 [skip ci] (c239b95)
+
+**Ci**
+
+- ci: workflow (d5c3fa1)
 
 #### 1.0.5
 
