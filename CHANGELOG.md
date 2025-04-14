@@ -1,5 +1,12 @@
 # Changelog - Production Branch
 
+### [1.0.12](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.11-uat...v1.0.12-uat) (2025-04-14)
+
+
+### Chores
+
+* iuuhntntih ([809b3b0](https://github.com/swetagupta311/test-semetic-versioning/commit/809b3b005a64a54cd8d304e95896b494b3117178))
+
 ### [1.0.11](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.10-uat...v1.0.11-uat) (2025-04-14)
 
 
