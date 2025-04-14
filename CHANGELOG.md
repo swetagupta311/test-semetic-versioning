@@ -1,5 +1,18 @@
 # Changelog - Production Branch
 
+### [1.0.11](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.10-uat...v1.0.11-uat) (2025-04-14)
+
+
+### Bug Fixes
+
+* message ([142094f](https://github.com/swetagupta311/test-semetic-versioning/commit/142094ffa167131c397fdd4039964d1226e703c6))
+* print message ([40795b9](https://github.com/swetagupta311/test-semetic-versioning/commit/40795b9b9a7bb96298a8454960094c7a61b05a96))
+
+
+### Chores
+
+* biwbbwru ([7286c42](https://github.com/swetagupta311/test-semetic-versioning/commit/7286c42718249d59ff63259f9f1e998396b5ceb3))
+
 ### [1.0.10](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.9-uat...v1.0.10-uat) (2025-04-14)
 
 
