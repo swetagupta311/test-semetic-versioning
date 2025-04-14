@@ -7,9 +7,7 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
-      - run: echo "✅ Unified changelog triggered from ${{ github.event.client_payload.source }}"
-    
+    runs-on: ubuntu-latest    
     steps:
       - run: echo "✅ Unified changelog triggered from ${{ github.event.client_payload.source }}"
 
