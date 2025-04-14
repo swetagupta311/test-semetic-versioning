@@ -4,6 +4,17 @@
 
 ### PROD
 
+#### 1.1.42
+
+**Chore**
+
+- chore(release): 1.1.42 [skip ci] (e221edf)
+- chore: update unified changelog [skip ci] (ed65715)
+
+**Fix**
+
+- fix: Update merge.yaml (5f7a39e)
+
 #### 1.1.41
 
 **Chore**
@@ -13,6 +24,48 @@
 **Fix**
 
 - fix: merge.yaml (ac66ace)
+
+### UAT
+
+#### 1.0.13
+
+**Chore**
+
+- chore(release): 1.0.13 [skip ci] (29ca1be)
+
+**Fix**
+
+- fix: Rename main.yaml to merge.yaml (82aaeda)
+
+#### 1.0.12
+
+**Chore**
+
+- chore(release): 1.0.12 [skip ci] (b6d13c9)
+- chore: iuuhntntih (809b3b0)
+
+#### 1.0.11
+
+**Chore**
+
+- chore(release): 1.0.11 [skip ci] (a13361d)
+- chore: biwbbwru (7286c42)
+
+**Fix**
+
+- fix: print message (40795b9)
+- fix: message (142094f)
+
+#### 1.0.10
+
+**Chore**
+
+- chore(release): 1.0.10 [skip ci] (3426f07)
+
+**Fix**
+
+- fix: jnbieuge (1577cdc)
+- fix: updating main.yaml (b227a5f)
 
 ## 2025-04-11
 
