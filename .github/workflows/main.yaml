@@ -37,4 +37,5 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: token $GH_TOKEN" \
             https://api.github.com/repos/swetagupta311/test-semetic-versioning/dispatches \
-            -d '{"event_type":"update-unified-changelog", "client_payload": { "source": "uat" }}'          
+            -d '{"event_type":"update-unified-changelog", "client_payload": { "source": "uat" }}' \
+            -v       
