@@ -1,5 +1,13 @@
 # Changelog - Production Branch
 
+### [1.0.10](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.9-uat...v1.0.10-uat) (2025-04-14)
+
+
+### Bug Fixes
+
+* jnbieuge ([1577cdc](https://github.com/swetagupta311/test-semetic-versioning/commit/1577cdcc16eed98f08d2167764e33721af33a00e))
+* updating main.yaml ([b227a5f](https://github.com/swetagupta311/test-semetic-versioning/commit/b227a5f0433d3b695c6ebc832e37090e408f65a8))
+
 ### [1.0.9](https://github.com/swetagupta311/test-semetic-versioning/compare/v1.0.8-uat...v1.0.9-uat) (2025-04-11)
 
 
